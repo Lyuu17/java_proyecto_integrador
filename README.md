@@ -1,1 +1,12 @@
 # java_proyecto_integrador
+
+## Secuencia incremental PL/SQL
+
+```
+CREATE SEQUENCE ID_AUTO_INCREMENT_SEQ
+INCREMENT BY 1
+START WITH 1
+MAXVALUE 999999999
+NOCYCLE
+NOCACHE;
+```

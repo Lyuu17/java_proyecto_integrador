@@ -1,5 +1,7 @@
 # java_proyecto_integrador
 
+Proyecto final de curso 1ºDAW para las asignaturas Base de Datos y Programación.
+
 ## Secuencia incremental PL/SQL
 
 ```

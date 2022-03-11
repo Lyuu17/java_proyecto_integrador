@@ -1,6 +1,8 @@
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class GestorBD {
@@ -40,5 +42,28 @@ public class GestorBD {
 	
 	public static Connection getConexion() {
 		return conn;
+	}
+	
+	public static ResultSet consulta(String q, String... paramArray) {
+		Connection conn = GestorBD.getConexion();
+		PreparedStatement stmt;
+		ResultSet res = null;
+		try {
+			stmt = conn.prepareStatement(q);
+			
+			int i = 1;
+			for(String paramStr : paramArray) {
+				stmt.setString(i, paramStr);
+				i++;
+			}
+
+			res = stmt.executeQuery();
+			
+			return res;
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return res;
 	}
 }

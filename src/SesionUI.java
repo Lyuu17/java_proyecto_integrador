@@ -8,10 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import javax.swing.event.ChangeListener;
@@ -54,28 +53,22 @@ public class SesionUI extends JFrame {
 					reg.setVisible(true);
 				}
 				else {
-					//iniciar sesion
-					Connection conn = GestorBD.getConexion();
-					PreparedStatement stmt;
+					String hashContraseña = Utils.hashContraseña(fttdContraseña.getText());
+					ResultSet rs = GestorBD.consulta("SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?", fttdUsuario.getText(), hashContraseña);
+					
 					try {
-						String hashContraseña = Utils.hashContraseña(fttdContraseña.getText());
-						
-						stmt = conn.prepareStatement("SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?");
-						stmt.setString(1, fttdUsuario.getText());
-						stmt.setString(2, hashContraseña);
-						ResultSet rs = stmt.executeQuery();
-						
 						if (!rs.next()) {
 							JOptionPane.showMessageDialog(contentPane, "Usuario o contraseña inválida", "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
 						}
 						else {
 							JOptionPane.showMessageDialog(contentPane, "OK", "Inicio de sesión", JOptionPane.PLAIN_MESSAGE);
 						}
-					} catch (SQLException e1) {
+					} catch (HeadlessException | SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+						
+						JOptionPane.showMessageDialog(contentPane, "Ha ocurrido un error.", "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
 					}
-					
 				}
 			}
 		});

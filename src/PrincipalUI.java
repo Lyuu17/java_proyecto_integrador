@@ -3,6 +3,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
@@ -35,24 +37,36 @@ public class PrincipalUI extends JFrame {
 		btnCuenta.setBounds(10, 11, 89, 23);
 		contentPane.add(btnCuenta);
 		
-		String[] tablaNombreColumnas = {"First Name",
-                "Last Name",
-                "Sport",
-                "# of Years",
-                "Vegetarian"};
+		ResultSet rsDatosLength = GestorBD.consulta("SELECT COUNT(*) FROM tiendas");
+		ResultSet rs = GestorBD.consulta("SELECT direccion, numero, codigo_postal, poblacion, ciudad FROM tiendas");
+		
+		String[] tablaNombreColumnas = {"Dirección",
+                "Nº",
+                "Código Postal",
+                "Población",
+                "Ciudad"};
 
-		Object[][] tablaDatos = {
-		{"Kathy", "Smith",
-		"Snowboarding", new Integer(5), new Boolean(false)},
-		{"John", "Doe",
-		"Rowing", new Integer(3), new Boolean(true)},
-		{"Sue", "Black",
-		"Knitting", new Integer(2), new Boolean(false)},
-		{"Jane", "White",
-		"Speed reading", new Integer(20), new Boolean(true)},
-		{"Joe", "Brown",
-		"Pool", new Integer(10), new Boolean(false)}
-		};
+		Object[][] tablaDatos = null;
+
+		try {
+			rsDatosLength.next();
+			
+			tablaDatos = new Object[rsDatosLength.getInt(1)][];
+			
+			int row = 0;
+			while(rs.next()) {
+				tablaDatos[row] = new Object[tablaNombreColumnas.length];
+				
+				for(int i = 0; i < tablaNombreColumnas.length; i++) {					
+					tablaDatos[row][i] = rs.getString(i + 1);
+				}
+				
+				row++;
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		final JTable tablaTiendas = new JTable(tablaDatos, tablaNombreColumnas);
 		tablaTiendas.setPreferredScrollableViewportSize(new Dimension(500, 70));

@@ -1,8 +1,17 @@
 
 public class Cuenta {
+	private static int idTienda;
 	private static String usuario;
 	private static boolean iniciadoSesion;
 	private static boolean admin;
+	
+	public static int getTiendaID() {
+		return idTienda;
+	}
+	
+	public static void setTiendaID(int tiendaID) {
+		Cuenta.idTienda = tiendaID;
+	}
 
 	public static String getUsuario() {
 		return usuario;

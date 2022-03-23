@@ -1,7 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -12,25 +11,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
-import javax.swing.JCheckBox;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class SesionUI extends JFrame {
 
 	private JPanel contentPane;
 
-	JCheckBox chckbxRegistro;
-	JCheckBox chckbxIniciarSesion;
-
 	/**
 	 * Create the frame.
 	 */
 	public SesionUI() {
+		setTitle("Cuenta");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 184);
+		setBounds(100, 100, 421, 145);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -38,79 +35,63 @@ public class SesionUI extends JFrame {
 		setResizable(false);
 		
 		JFormattedTextField fttdUsuario = new JFormattedTextField();
-		fttdUsuario.setBounds(281, 28, 143, 20);
+		fttdUsuario.setBounds(109, 17, 143, 20);
 		contentPane.add(fttdUsuario);
 		
 		JFormattedTextField fttdContraseña = new JFormattedTextField();
-		fttdContraseña.setBounds(281, 60, 143, 20);
+		fttdContraseña.setBounds(109, 48, 143, 20);
 		contentPane.add(fttdContraseña);
 		
-		JButton btnAccion = new JButton("Iniciar Sesi\u00F3n");
+		JButton btnAccion = new JButton(Idiomas.getTraduccionFormato("SESION_INICIARSESION_BOTON"));
 		btnAccion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (chckbxRegistro.isSelected()) {
-					RegistroUI reg = new RegistroUI(fttdUsuario.getText(), fttdContraseña.getText());
-					reg.setVisible(true);
-				}
-				else {
-					String hashContraseña = Utils.hashContraseña(fttdContraseña.getText());
-					ResultSet rs = GestorBD.consulta("SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?", fttdUsuario.getText(), hashContraseña);
-					
-					try {
-						if (!rs.next()) {
-							JOptionPane.showMessageDialog(contentPane, "Usuario o contraseña inválida", "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
-						}
-						else {
-							JOptionPane.showMessageDialog(contentPane, "OK", "Inicio de sesión", JOptionPane.PLAIN_MESSAGE);
-						}
-					} catch (HeadlessException | SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-						
-						JOptionPane.showMessageDialog(contentPane, "Ha ocurrido un error.", "Inicio de sesión", JOptionPane.ERROR_MESSAGE);
+				String hashContraseña = Utils.hashContraseña(fttdContraseña.getText());
+				ResultSet rs = GestorBD.consulta("SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?", fttdUsuario.getText(), hashContraseña);
+
+				try {
+					if (!rs.next()) {
+						JOptionPane.showMessageDialog(contentPane, Idiomas.getTraduccionFormato("SESION_USUARIO_CONTRA_INVALIDA"), Idiomas.getTraduccionFormato("SESION_INICION_SESION_TITULO"), JOptionPane.ERROR_MESSAGE);
 					}
+					else {
+						Cuenta.setIniciadoSesion(true);
+						Cuenta.setUsuario(fttdUsuario.getText());
+						
+						JOptionPane.showMessageDialog(contentPane, Idiomas.getTraduccionFormato("BIENVENIDO", Cuenta.getUsuario()), Idiomas.getTraduccionFormato("SESION_INICION_SESION_TITULO"), JOptionPane.PLAIN_MESSAGE);
+
+						dispose();
+					}
+				} catch (HeadlessException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+
+					JOptionPane.showMessageDialog(contentPane, Idiomas.getTraduccionFormato("SESION_ERROR"), Idiomas.getTraduccionFormato("SESION_INICION_SESION_TITULO"), JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
-		btnAccion.setBounds(149, 117, 113, 23);
+		btnAccion.setBounds(109, 79, 143, 23);
 		contentPane.add(btnAccion);
 		
-		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setBounds(10, 31, 89, 14);
+		JLabel lblUsuario = new JLabel(Idiomas.getTraduccionFormato("USUARIO"));
+		lblUsuario.setBounds(10, 20, 89, 14);
 		contentPane.add(lblUsuario);
 		
-		JLabel lblContraseña = new JLabel("Contrase\u00F1a");
-		lblContraseña.setBounds(10, 63, 89, 14);
+		JLabel lblContraseña = new JLabel(Idiomas.getTraduccionFormato("CONTRASENHA"));
+		lblContraseña.setBounds(10, 52, 89, 14);
 		contentPane.add(lblContraseña);
 		
-		ButtonGroup bg = new ButtonGroup();
+		JSeparator separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		separator.setBounds(269, 9, 10, 83);
+		contentPane.add(separator);
 		
-		chckbxRegistro = new JCheckBox("No tengo cuenta");
-		chckbxRegistro.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent e) {
-				if (!chckbxRegistro.isSelected()) {
-					chckbxIniciarSesion.setSelected(!chckbxRegistro.isSelected());
-					btnAccion.setText("Iniciar Sesión");
-				}
+		JButton btnRegistrarse = new JButton(Idiomas.getTraduccionFormato("SESION_REGISTRARSE_BOTON"));
+		btnRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnRegistrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Principal.getRegistroUI().setVisible(true);
 			}
 		});
-		chckbxRegistro.setBounds(201, 87, 134, 23);
-		bg.add(chckbxRegistro);
-		contentPane.add(chckbxRegistro);
-		
-		chckbxIniciarSesion = new JCheckBox("Tengo cuenta");
-		chckbxIniciarSesion.setSelected(true);
-		chckbxIniciarSesion.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent e) {
-				if (!chckbxIniciarSesion.isSelected()) {
-					chckbxRegistro.setSelected(!chckbxIniciarSesion.isSelected());
-					btnAccion.setText("Registrarse");
-				}
-				
-			}
-		});
-		chckbxIniciarSesion.setBounds(84, 87, 115, 23);
-		bg.add(chckbxIniciarSesion);
-		contentPane.add(chckbxIniciarSesion);
+		btnRegistrarse.setBounds(291, 27, 104, 41);
+		contentPane.add(btnRegistrarse);
 	}
 }

@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalTime;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import javax.swing.JSeparator;
@@ -56,7 +57,11 @@ public class SesionUI extends JFrame {
 						Cuenta.setIniciadoSesion(true);
 						Cuenta.setUsuario(fttdUsuario.getText());
 						
-						JOptionPane.showMessageDialog(contentPane, Idiomas.getTraduccionFormato("BIENVENIDO", Cuenta.getUsuario()), Idiomas.getTraduccionFormato("SESION_INICION_SESION_TITULO"), JOptionPane.PLAIN_MESSAGE);
+						LocalTime tiempoAhora = LocalTime.now();
+						
+						String tiempo = tiempoAhora.getHour()+":"+tiempoAhora.getMinute();
+						
+						JOptionPane.showMessageDialog(contentPane, Idiomas.getTraduccionFormato("BIENVENIDO", Cuenta.getUsuario(), tiempo), Idiomas.getTraduccionFormato("SESION_INICION_SESION_TITULO"), JOptionPane.PLAIN_MESSAGE);
 
 						dispose();
 					}

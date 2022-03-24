@@ -3,9 +3,9 @@ public class ProductoComida extends Producto {
 	private String fabricante;
 	private double peso;
 
-	public ProductoComida(int id, String nombre, String descripcion, double precio, double rebaja, String fechaAñadido, int categoria, 
+	public ProductoComida(int id, String nombre, String descripcion, double precio, double rebaja, String fechaAñadido, int categoria, int cantidad, int cantidadMaxima, 
 			String fabricante, double peso) {
-		super(id, nombre, descripcion, precio, rebaja, fechaAñadido, categoria);
+		super(id, nombre, descripcion, precio, rebaja, fechaAñadido, cantidad, cantidadMaxima, categoria);
 		this.fabricante = fabricante;
 		this.peso = peso;
 	}

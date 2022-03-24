@@ -3,9 +3,9 @@ public class ProductoLibro extends Producto{
 	private String autor;
 	private int numeroPaginas;
 	private String editorial;
-	public ProductoLibro(int id, String nombre, String descripcion, double precio, double rebaja, String fechaAñadido,
-			int categoria, String autor, int numeroPaginas, String editorial) {
-		super(id, nombre, descripcion, precio, rebaja, fechaAñadido, categoria);
+	public ProductoLibro(int id, String nombre, String descripcion, double precio, double rebaja, String fechaAñadido, int categoria, int cantidad, int cantidadMaxima, 
+			String autor, int numeroPaginas, String editorial) {
+		super(id, nombre, descripcion, precio, rebaja, fechaAñadido, categoria, cantidad, cantidadMaxima);
 		this.autor = autor;
 		this.numeroPaginas = numeroPaginas;
 		this.editorial = editorial;

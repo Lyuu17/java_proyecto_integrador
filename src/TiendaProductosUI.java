@@ -61,9 +61,8 @@ public class TiendaProductosUI extends JFrame implements InterfazComun {
 	 */
 	public void crearInterfaz() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 592, 393);
+		setBounds(100, 100, 678, 393);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -103,7 +102,7 @@ public class TiendaProductosUI extends JFrame implements InterfazComun {
 		contentPane.add(treeCategorias);
 
 		JLabel lblUltimosProds = new JLabel(Idiomas.getTraduccionFormato("ULTIMOS_PRODUCTOS"));
-		lblUltimosProds.setForeground(Color.WHITE);
+		lblUltimosProds.setForeground(Color.BLACK);
 		lblUltimosProds.setBounds(151, 40, 394, 19);
 		contentPane.add(lblUltimosProds);
 		lblUltimosProds.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -141,6 +140,20 @@ public class TiendaProductosUI extends JFrame implements InterfazComun {
 		});
 
 		contentPane.add(comboIdiomas);
+		
+		JButton btnCarrito = new JButton();
+		btnCarrito.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CarritoUI carritoUI = new CarritoUI();
+				carritoUI.setVisible(true);
+			}
+		});
+		btnCarrito.setBounds(577, 13, 68, 46);
+		
+		ImageIconResize iconoCarrito = new ImageIconResize(TiendaProductosUI.class.getResource("/images/carrito.png")).getScaledInstance(48, 48, java.awt.Image.SCALE_SMOOTH);
+		btnCarrito.setIcon(iconoCarrito);
+		
+		contentPane.add(btnCarrito);
 	}
 
 	private void cargarListaProductos() {
@@ -167,34 +180,38 @@ public class TiendaProductosUI extends JFrame implements InterfazComun {
 				double rebaja = rs.getDouble("rebaja");
 				String fecha = rs.getString("fecha_añadido");
 				int cat = rs.getInt("categoria");
+				int cantidadMaxima = rs.getInt("cantidad");
 
 				switch(cat) {
 				case ProductosCategorias.CAT_ROPA:
 					ResultSet rs_ropa = GestorBD.consulta("SELECT talla, color, marcas.marca FROM producto_ropa "
 							+ "JOIN marcas ON marcas.id = producto_ropa.marca "
+							+ "JOIN productos_tienda ON productos_tienda.producto_id = producto_ropa.id "
 							+ "WHERE producto_ropa.id=" + id);
 					if (!rs_ropa.next()) throw new SQLException();
 
-					prod = new ProductoRopa(id, n, desc, precio, rebaja, fecha, cat,
+					prod = new ProductoRopa(id, n, desc, precio, rebaja, fecha, cat, 0, cantidadMaxima,
 							rs_ropa.getString("talla"), rs_ropa.getString("color"), rs_ropa.getString("marca"));
 					break;
 				case ProductosCategorias.CAT_COMIDA:
 					ResultSet rs_comida = GestorBD.consulta("SELECT fabricantes.fabricante, peso FROM producto_comida "
 							+ "JOIN fabricantes ON fabricantes.id = producto_comida.fabricante "
+							+ "JOIN productos_tienda ON productos_tienda.producto_id = producto_comida.id "
 							+ "WHERE producto_comida.id=" + id);
 					if (!rs_comida.next()) throw new SQLException();
 
-					prod = new ProductoComida(id, n, desc, precio, rebaja, fecha, cat,
+					prod = new ProductoComida(id, n, desc, precio, rebaja, fecha, cat, 0, cantidadMaxima,
 							rs_comida.getString("fabricante"), rs_comida.getDouble("peso"));
 					break;
 				case ProductosCategorias.CAT_LIBROS:
 					ResultSet rs_libro = GestorBD.consulta("SELECT editoriales.editorial, autores.autor, numeroPaginas FROM producto_libros "
 							+ "JOIN autores ON autores.id = producto_libros.autor "
 							+ "JOIN editoriales ON editoriales.id = producto_libros.editorial "
+							+ "JOIN productos_tienda ON productos_tienda.producto_id = producto_libros.id "
 							+ "WHERE producto_libros.id=" + id);
 					if (!rs_libro.next()) throw new SQLException();
 
-					prod = new ProductoLibro(id, n, desc, precio, rebaja, fecha, cat,
+					prod = new ProductoLibro(id, n, desc, precio, rebaja, fecha, cat, 0, cantidadMaxima,
 							rs_libro.getString("autor"), rs_libro.getInt("numeroPaginas"), rs_libro.getString("editorial"));
 					break;
 				default:
@@ -221,7 +238,7 @@ public class TiendaProductosUI extends JFrame implements InterfazComun {
 		}
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(151, 71, 414, 249);
+		scrollPane.setBounds(151, 71, 494, 249);
 		contentPane.add(scrollPane);
 
 		JTable tablaProductos = new JTable(tablaDatos) {

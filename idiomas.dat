@@ -31,6 +31,7 @@ VER = Ver
 ROPA = Ropa
 COMIDA = Comida
 LIBROS = Libros
+CANTIDAD = Cantidad
 
 [English]
 BIENVENIDO = Welcome, %s. You logged in at %s.
@@ -65,3 +66,4 @@ VER = View
 ROPA = Clothes
 COMIDA = Food
 LIBROS = Books
+CANTIDAD = Quantity

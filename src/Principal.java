@@ -1,5 +1,7 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -10,6 +12,7 @@ import java.util.TimerTask;
  */
 public class Principal {
 	private static ArrayList<Producto> productos = null;
+	private static ArrayList<Producto> carritoCompra = null;
 	
 	private static RegistroUI registroUI = null;
 	private static SesionUI sesionUI = null;
@@ -36,6 +39,7 @@ public class Principal {
 		} 
 	    
 	    productos = new ArrayList<Producto>();
+	    carritoCompra = new ArrayList<Producto>();
 	    
 	    /**
 	     * inicializar UI
@@ -104,5 +108,12 @@ public class Principal {
 	 */
 	public static TiendasUI getTiendasUI() {
 		return tiendasUI;
+	}
+
+	/**
+	 * @return the carritoCompra
+	 */
+	public static ArrayList<Producto> getProductosCarrito() {
+		return carritoCompra;
 	}
 }

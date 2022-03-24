@@ -1,5 +1,5 @@
 [Espanol]
-BIENVENIDO = Bienvenido, %s.
+BIENVENIDO = Bienvenido, %s. Iniciaste sesión a las %s.
 SESION_REGISTRARSE_BOTON = Registrarse
 SESION_INICIARSESION_BOTON = Iniciar sesión
 SESION_INICION_SESION_TITULO = Inicio de sesión
@@ -34,7 +34,7 @@ LIBROS = Libros
 CANTIDAD = Cantidad
 
 [English]
-BIENVENIDO = Welcome, %s.
+BIENVENIDO = Welcome, %s. You logged in at %s.
 SESION_REGISTRARSE_BOTON = Register
 SESION_INICIARSESION_BOTON = Login
 SESION_INICION_SESION_TITULO = Login

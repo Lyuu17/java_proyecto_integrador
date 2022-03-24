@@ -31,7 +31,7 @@ public class ProductoUI extends JFrame {
 	
 	public void crearInterfaz(Producto prod) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 398, 314);
+		setBounds(100, 100, 398, 352);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -76,6 +76,16 @@ public class ProductoUI extends JFrame {
 		lblMasDatos.setVerticalAlignment(SwingConstants.TOP);
 		lblMasDatos.setBounds(10, 11, 345, 80);
 		panelMasDatos.add(lblMasDatos);
+		
+		JButton btnAñadir = new JButton("A\u00F1adir al carrito");
+		btnAñadir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CantidadUI cantidadUI = new CantidadUI(prod);
+				cantidadUI.setVisible(true);
+			}
+		});
+		btnAñadir.setBounds(116, 277, 150, 23);
+		contentPane.add(btnAñadir);
 		
 		switch(prod.getCategoria()) {
 		case ProductosCategorias.CAT_ROPA:

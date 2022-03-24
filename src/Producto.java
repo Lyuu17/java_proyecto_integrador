@@ -8,16 +8,20 @@ public class Producto {
 	private double rebaja;
 	private String fechaAñadido;
 	private int categoria;
+	private int cantidad;
+	private int cantidadMaxima;
 	
 	private ImageIcon icono;
 
-	public Producto(int id, String nombre, String descripcion, double precio, double rebaja, String fechaAñadido, int categoria) {
+	public Producto(int id, String nombre, String descripcion, double precio, double rebaja, String fechaAñadido, int cantidad, int cantidadMaxima, int categoria) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
 		this.rebaja = rebaja;
 		this.fechaAñadido = fechaAñadido;
+		this.cantidad = cantidad;
+		this.setCantidadMaxima(cantidadMaxima);
 		this.categoria = categoria;
 	}
 
@@ -104,6 +108,34 @@ public class Producto {
 	 */
 	public int getCategoria() {
 		return categoria;
+	}
+
+	/**
+	 * @return the cantidad
+	 */
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	/**
+	 * @param cantidad the cantidad to set
+	 */
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	/**
+	 * @return the cantidadMaxima
+	 */
+	public int getCantidadMaxima() {
+		return cantidadMaxima;
+	}
+
+	/**
+	 * @param cantidadMaxima the cantidadMaxima to set
+	 */
+	public void setCantidadMaxima(int cantidadMaxima) {
+		this.cantidadMaxima = cantidadMaxima;
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package Utils;
+package utils;
 import java.util.Enumeration;
 
 import javax.swing.JTree;

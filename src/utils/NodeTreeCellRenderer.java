@@ -1,4 +1,4 @@
-package Utils;
+package utils;
 
 import java.awt.Component;
 import java.net.URL;

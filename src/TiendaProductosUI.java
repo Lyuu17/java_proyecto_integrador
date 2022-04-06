@@ -12,13 +12,6 @@ import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import Utils.ImageIconResize;
-import Utils.JTreeExpand;
-import Utils.NodeTreeCellRenderer;
-import Utils.PlaceHolderFormattedTextField;
-import Utils.ButtonColumn;
-
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
@@ -27,6 +20,13 @@ import javax.swing.JCheckBox;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
+
+import utils.ButtonColumn;
+import utils.ImageIconResize;
+import utils.JTreeExpand;
+import utils.NodeTreeCellRenderer;
+import utils.PlaceHolderFormattedTextField;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;

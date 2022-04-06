@@ -6,7 +6,8 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import Utils.ButtonColumn;
+import utils.ButtonColumn;
+
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.JLabel;

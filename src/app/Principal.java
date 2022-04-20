@@ -12,6 +12,8 @@ import view.TiendasView;
  *
  */
 public class Principal {
+	public static final String PROGRAMA_NOMBRE = "Pickify";
+	
 	public static void main(String[] args) {
 		if (!GestorBD.conectar()) {
 			System.out.println("Fallo al conectar a la base de datos");

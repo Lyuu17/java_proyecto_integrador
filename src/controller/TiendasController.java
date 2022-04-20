@@ -2,7 +2,10 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import app.Cuenta;
 import app.Idiomas;
+import app.Principal;
 import model.TiendaProductosModel;
 import model.TiendasModel;
 import view.TiendaProductosView;
@@ -24,6 +27,7 @@ public class TiendasController {
 		this.view = view;
 
 		this.model.cargarTiendas();
+		this.view.setTitle(Principal.PROGRAMA_NOMBRE);
 		this.view.cargarListaTiendas(tablaNombreColumnas, this.model.getTiendas());
 		this.view.addSeleccionarTiendaListener(new SeleccionarTienda());
 	}
@@ -36,7 +40,9 @@ public class TiendasController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			view.dispose();
-
+			
+			Cuenta.setTiendaID(view.getTiendaFilaSeleccionada());
+			
 			new TiendaProductosController(new TiendaProductosModel(), new TiendaProductosView()).mostrar();
 		}
 	}

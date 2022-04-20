@@ -53,7 +53,7 @@ public class TiendasView extends JFrame {
 		};
 				
 		btnSeleccionarTienda = new JButton(Idiomas.getTraduccionFormato("SELECCIONAR_TIENDA"));
-		btnSeleccionarTienda.setBounds(114, 226, 163, 23);
+		btnSeleccionarTienda.setBounds(132, 226, 163, 23);
 		contentPane.add(btnSeleccionarTienda);
 				
 		PlaceHolderFormattedTextField fttdCP = new PlaceHolderFormattedTextField();
@@ -82,7 +82,7 @@ public class TiendasView extends JFrame {
 		contentPane.add(fttdCP);
 		
 		comboIdiomas = new JComboBox<String>();
-		comboIdiomas.setBounds(10, 227, 94, 23);
+		comboIdiomas.setBounds(10, 226, 114, 23);
 		comboIdiomas.setRenderer(new IdiomaRenderer());
 		comboIdiomas.addItem("Espanol");
 		comboIdiomas.addItem("English");
@@ -92,6 +92,10 @@ public class TiendasView extends JFrame {
 	
 	public void addSeleccionarTiendaListener(ActionListener al) {
 		btnSeleccionarTienda.addActionListener(al);
+	}
+	
+	public int getTiendaFilaSeleccionada() {
+		return tablaTiendas.getSelectedRow();
 	}
 	
 	public void cargarListaTiendas(String tablaNombreColumnas[], ArrayList<Tienda> tiendas) {

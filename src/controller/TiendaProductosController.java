@@ -2,13 +2,15 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.AbstractAction;
 
 import app.Idiomas;
-import app.Principal;
 import app.Producto;
 import model.TiendaProductosModel;
+import model.TiendasModel;
 import view.TiendaProductosView;
+import view.TiendasView;
 
 public class TiendaProductosController {
 	private TiendaProductosModel model;
@@ -24,12 +26,21 @@ public class TiendaProductosController {
 	public TiendaProductosController(TiendaProductosModel model, TiendaProductosView view) {
 		this.model = model;
 		this.view = view;
+		this.view.addAtrasListener(new Atras());
 		this.view.addCarritoListener(new Carrito());
 	}
 	
 	public void mostrar() {
 		this.view.setVisible(true);
 		this.view.cargarListaProductos(tablaNombreColumnas, new Consultar(), this.model.getProductos());
+	}
+	
+	class Atras implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			view.dispose();
+			new TiendasController(new TiendasModel(), new TiendasView()).mostrar();
+		}
 	}
 	
 	@SuppressWarnings("serial")

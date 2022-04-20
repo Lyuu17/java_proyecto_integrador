@@ -1,3 +1,4 @@
+package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
@@ -5,31 +6,26 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.awt.event.ActionEvent;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JMenuItem;
-import javax.swing.JMenuBar;
-import javax.swing.JCheckBoxMenuItem;
 import javax.swing.SwingConstants;
 import com.toedter.calendar.JDateChooser;
 
+import app.Idiomas;
+
 @SuppressWarnings("serial")
-public class RegistroUI extends JFrame {
+public class RegistroView extends JFrame {
 
 	private JPanel contentPane;
+	
+	private final JFormattedTextField fttdUsuario, fttdContraseña, 
+				fttdNombre, fttdApellidos, 
+				fttdEmail, fttdNumTlf, 
+				fttdDireccion1, fttdCiudad, fttdCodigoPostal;
+	private final JDateChooser dateFechaNac;
+	
+	private final JButton btnEnviar;
 
-	/**
-	 * Create the frame.
-	 */
-	public RegistroUI() {
+	public RegistroView() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 421, 349);
 		contentPane = new JPanel();
@@ -38,11 +34,11 @@ public class RegistroUI extends JFrame {
 		contentPane.setLayout(null);
 		setResizable(false);
 
-		JFormattedTextField fttdNombre = new JFormattedTextField();
+		fttdNombre = new JFormattedTextField();
 		fttdNombre.setBounds(263, 11, 132, 20);
 		contentPane.add(fttdNombre);
 		
-		JFormattedTextField fttdApellidos = new JFormattedTextField();
+		fttdApellidos = new JFormattedTextField();
 		fttdApellidos.setBounds(263, 42, 132, 20);
 		contentPane.add(fttdApellidos);
 		
@@ -51,15 +47,15 @@ public class RegistroUI extends JFrame {
 		s.setBounds(164, 104, 231, 10);
 		contentPane.add(s);
 		
-		JFormattedTextField fttdEmail = new JFormattedTextField();
+		fttdEmail = new JFormattedTextField();
 		fttdEmail.setBounds(263, 132, 132, 20);
 		contentPane.add(fttdEmail);
 		
-		JFormattedTextField fttdCodigoPostal = new JFormattedTextField();
+		fttdCodigoPostal = new JFormattedTextField();
 		fttdCodigoPostal.setBounds(263, 250, 132, 20);
 		contentPane.add(fttdCodigoPostal);
 		
-		JFormattedTextField fttdNumTlf = new JFormattedTextField();
+		fttdNumTlf = new JFormattedTextField();
 		fttdNumTlf.setBounds(263, 157, 132, 20);
 		contentPane.add(fttdNumTlf);
 		
@@ -83,7 +79,7 @@ public class RegistroUI extends JFrame {
 		lblNumTlf.setBounds(164, 160, 89, 14);
 		contentPane.add(lblNumTlf);
 		
-		JFormattedTextField fttdDireccion1 = new JFormattedTextField();
+		fttdDireccion1 = new JFormattedTextField();
 		fttdDireccion1.setBounds(263, 203, 132, 20);
 		contentPane.add(fttdDireccion1);
 		
@@ -95,7 +91,7 @@ public class RegistroUI extends JFrame {
 		lblCiudad.setBounds(164, 230, 89, 14);
 		contentPane.add(lblCiudad);
 		
-		JFormattedTextField fttdCiudad = new JFormattedTextField();
+		fttdCiudad = new JFormattedTextField();
 		fttdCiudad.setBounds(263, 227, 132, 20);
 		contentPane.add(fttdCiudad);
 		
@@ -112,15 +108,15 @@ public class RegistroUI extends JFrame {
 		lblNewLabel_1.setBounds(164, 185, 89, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JButton btnEnviar = new JButton(Idiomas.getTraduccionFormato("ENVIAR"));
+		btnEnviar = new JButton(Idiomas.getTraduccionFormato("ENVIAR"));
 		btnEnviar.setBounds(10, 278, 385, 23);
 		contentPane.add(btnEnviar);
 		
-		JFormattedTextField fttdContraseña = new JFormattedTextField();
+		fttdContraseña = new JFormattedTextField();
 		fttdContraseña.setBounds(10, 157, 132, 20);
 		contentPane.add(fttdContraseña);
 		
-		JFormattedTextField fttdUsuario = new JFormattedTextField();
+		fttdUsuario = new JFormattedTextField();
 		fttdUsuario.setBounds(10, 104, 132, 20);
 		contentPane.add(fttdUsuario);
 		
@@ -141,48 +137,56 @@ public class RegistroUI extends JFrame {
 		separator.setBounds(148, 11, 6, 243);
 		contentPane.add(separator);
 		
-		JDateChooser dateFechaNac = new JDateChooser();
+		dateFechaNac = new JDateChooser();
 		dateFechaNac.setBounds(263, 73, 132, 20);
 		contentPane.add(dateFechaNac);
-		
-		btnEnviar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(fttdNombre.getText().isEmpty() ||
-					fttdApellidos.getText().isEmpty() ||
-					fttdEmail.getText().isEmpty() ||
-					fttdNumTlf.getText().isEmpty() ||
-					fttdDireccion1.getText().isEmpty() ||
-					fttdCiudad.getText().isEmpty() ||
-					fttdCodigoPostal.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(contentPane, "Faltan campos por rellenar", "Registro", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-				
-				Connection conn = GestorBD.getConexion();
-				PreparedStatement stmt;
-				try {
-					String hashContraseña = Utils.hashContraseña(fttdContraseña.getText());
+	}
+	
+	public void addEnviarListener(ActionListener al) {
+		btnEnviar.addActionListener(al);
+	}
 
-					stmt = conn.prepareStatement("INSERT INTO usuarios (id, usuario, contraseña) VALUES (ID_AUTO_INCREMENT_SEQ.NEXTVAL, ?, ?)");
+	public JPanel getContentPane() {
+		return contentPane;
+	}
 
-					GestorBD.consulta(stmt, fttdUsuario.getText(), hashContraseña);
-					
-					stmt = conn.prepareStatement("INSERT INTO datos_usuarios (id, nombre, apellidos, email, tlf, direccion, ciudad, codigopostal) VALUES (ID_AUTO_INCREMENT_SEQ.CURRVAL, ?, ?, ?, ?, ?, ?, ?)");
-					
-					GestorBD.consulta(stmt,fttdNombre.getText(), fttdApellidos.getText(), fttdEmail.getText(), fttdNumTlf.getText(), fttdDireccion1.getText(), fttdCiudad.getText(), fttdCodigoPostal.getText());
-					
-					Cuenta.setIniciadoSesion(true);
-					
-					JOptionPane.showMessageDialog(contentPane, "OK", "Registro", JOptionPane.PLAIN_MESSAGE);
-					
-					//dispose();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
+	public String getUsuario() {
+		return fttdUsuario.getText();
+	}
 
-		
+	public String getContraseña() {
+		return fttdContraseña.getText();
+	}
+
+	public String getNombre() {
+		return fttdNombre.getText();
+	}
+
+	public String getApellidos() {
+		return fttdApellidos.getText();
+	}
+
+	public String getEmail() {
+		return fttdEmail.getText();
+	}
+
+	public String getNumTlf() {
+		return fttdNumTlf.getText();
+	}
+
+	public String getDireccion() {
+		return fttdDireccion1.getText();
+	}
+
+	public String getCiudad() {
+		return fttdCiudad.getText();
+	}
+
+	public String getCodigoPostal() {
+		return fttdCodigoPostal.getText();
+	}
+
+	public String getFechaNac() {
+		return dateFechaNac.toString();
 	}
 }

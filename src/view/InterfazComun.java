@@ -1,3 +1,4 @@
+package view;
 
 public interface InterfazComun {
 	public void crearInterfaz();

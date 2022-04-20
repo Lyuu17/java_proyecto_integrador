@@ -1,3 +1,4 @@
+package app;
 
 public class ProductosCategorias {
 	final public static short CAT_ROPA = 1000;

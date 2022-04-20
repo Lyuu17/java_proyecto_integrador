@@ -5,7 +5,6 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 @SuppressWarnings("serial")
@@ -21,7 +20,6 @@ public class NodeTreeCellRenderer extends DefaultTreeCellRenderer {
 	    Object value, boolean selected, boolean expanded,
 	    boolean leaf, int row, boolean hasFocus) {
 	        super.getTreeCellRendererComponent(tree, value, selected,expanded, leaf, row, hasFocus);
-	        DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
 	        
 	        URL resourceURL = NodeTreeCellRenderer.class.getResource("/categorias/" + row + ".png");
 	        if (resourceURL != null) {

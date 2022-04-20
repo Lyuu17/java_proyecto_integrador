@@ -17,7 +17,8 @@ public class JTreeExpand extends JTree {
         expandAll(new TreePath(root), expand);
     }
 
-    public void expandAll(TreePath path, boolean expand) {
+    @SuppressWarnings("rawtypes")
+	public void expandAll(TreePath path, boolean expand) {
         TreeNode node = (TreeNode) path.getLastPathComponent();
 
         if (node.getChildCount() >= 0) {

@@ -1,3 +1,4 @@
+package app;
 
 public class Cuenta {
 	private static int idTienda;

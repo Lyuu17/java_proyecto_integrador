@@ -12,6 +12,7 @@ import app.ProductoComida;
 import app.ProductoLibro;
 import app.ProductoRopa;
 import app.ProductosCategorias;
+import app.Tienda;
 import utils.ImageIconResize;
 import view.TiendaProductosView;
 
@@ -27,6 +28,17 @@ public class TiendaProductosModel {
 	}
 	
 	public ArrayList<Producto> getProductos() {
+		return productos;
+	}
+	
+	public ArrayList<Producto> getProductos(String nombre) {
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		for(Producto producto : getProductos()) {
+			if (producto.getNombre().toLowerCase().indexOf(nombre.toLowerCase()) < 0 && !nombre.equals("")) continue;
+			
+			productos.add(producto);
+		}
+		
 		return productos;
 	}
 	

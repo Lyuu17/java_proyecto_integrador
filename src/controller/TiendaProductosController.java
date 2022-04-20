@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.AbstractAction;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import app.Idiomas;
 import app.Principal;
@@ -31,6 +33,7 @@ public class TiendaProductosController {
 		this.view.addAtrasListener(new Atras());
 		this.view.addCarritoListener(new Carrito());
 		this.view.addCuentaListener(new Cuenta());
+		this.view.addActualizarProductosListener(new ActualizarProductos());
 	}
 	
 	public void mostrar() {
@@ -43,6 +46,27 @@ public class TiendaProductosController {
 		public void actionPerformed(ActionEvent e) {
 			view.dispose();
 			new TiendasController(new TiendasModel(), new TiendasView()).mostrar();
+		}
+	}
+	
+	class ActualizarProductos implements DocumentListener {
+		@Override
+		public void insertUpdate(DocumentEvent e) {
+			actualizarListaProductos();
+		}
+
+		@Override
+		public void removeUpdate(DocumentEvent e) {
+			actualizarListaProductos();
+		}
+
+		@Override
+		public void changedUpdate(DocumentEvent e) {}
+		
+		private void actualizarListaProductos() {
+			String nombre = view.getBuscarProductosTexto();
+			
+			view.cargarListaProductos(tablaNombreColumnas, new Consultar(), model.getProductos(nombre));
 		}
 	}
 	

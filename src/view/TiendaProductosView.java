@@ -9,6 +9,7 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -43,6 +44,8 @@ public class TiendaProductosView extends JFrame {
 	
 	private JButton btnCarrito;
 	private JButton btnAtras;
+	
+	private PlaceHolderFormattedTextField fttdBuscarProductos;
 
 	public TiendaProductosView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +56,7 @@ public class TiendaProductosView extends JFrame {
 		contentPane.setLayout(null);
 		setResizable(false);
 
-		PlaceHolderFormattedTextField fttdBuscarProductos = new PlaceHolderFormattedTextField();
+		fttdBuscarProductos = new PlaceHolderFormattedTextField();
 		fttdBuscarProductos.setBounds(151, 12, 292, 20);
 		fttdBuscarProductos.setPlaceholder(Idiomas.getTraduccionFormato("BUSCAR_PRODUCTOS"));
 		contentPane.add(fttdBuscarProductos);
@@ -105,18 +108,18 @@ public class TiendaProductosView extends JFrame {
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(151, 71, 494, 249);
 		contentPane.add(scrollPane);
-		
-		int columnaImagen = 0;
-		tablaProductos = new JTable() {
-			@SuppressWarnings({ "unchecked", "rawtypes" })
-			public Class getColumnClass(int column) {
-				return (column == columnaImagen) ? ImageIcon.class : Object.class;
-			}
-		};
+	}
+	
+	public void addActualizarProductosListener(DocumentListener dl) {
+		fttdBuscarProductos.getDocument().addDocumentListener(dl);
 	}
 	
 	public void addIdiomaComboboxListener(ActionListener al) {
 		comboIdiomas.addActionListener(al);
+	}
+	
+	public String getBuscarProductosTexto() {
+		return fttdBuscarProductos.getText();
 	}
 	
 	public int getIdiomaComboboxItemSeleccionado() {
@@ -155,6 +158,13 @@ public class TiendaProductosView extends JFrame {
 		
 		insertarProductos(productos);
 		
+		int columnaImagen = 0;
+		tablaProductos = new JTable() {
+			@SuppressWarnings({ "unchecked", "rawtypes" })
+			public Class getColumnClass(int column) {
+				return (column == columnaImagen) ? ImageIcon.class : Object.class;
+			}
+		};
 		tablaProductos.setModel(tablaDatos);
 		tablaProductos.setRowHeight(60);
 		tablaProductos.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);

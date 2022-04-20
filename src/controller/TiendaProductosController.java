@@ -30,6 +30,7 @@ public class TiendaProductosController {
 		this.view.setTitle(Principal.PROGRAMA_NOMBRE);
 		this.view.addAtrasListener(new Atras());
 		this.view.addCarritoListener(new Carrito());
+		this.view.addCuentaListener(new Cuenta());
 	}
 	
 	public void mostrar() {
@@ -69,6 +70,12 @@ public class TiendaProductosController {
 	class Carrito implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			new CarritoController(model.getProductosCarrito()).mostrar();
+		}
+	}
+	
+	class Cuenta implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			new SesionController().mostrar();
 		}
 	}
 }

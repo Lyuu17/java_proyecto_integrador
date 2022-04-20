@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class SesionView extends JFrame {

@@ -24,10 +24,6 @@ public class CantidadController {
 		this.view.setVisible(true);
 	}
 	
-	public CantidadView getView() {
-		return view;
-	}
-	
 	class AñadirCantidad implements ActionListener {
 		public void actionPerformed(ActionEvent evt) {
 			try {

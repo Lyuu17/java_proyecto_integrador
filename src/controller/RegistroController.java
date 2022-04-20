@@ -21,8 +21,8 @@ public class RegistroController {
         this.view.addEnviarListener(new Enviar());
     }
 	
-	public RegistroView getView() {
-		return view;
+	public void mostrar() {
+		this.view.setVisible(true);
 	}
 	
 	class Enviar implements ActionListener {

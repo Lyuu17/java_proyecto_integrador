@@ -32,10 +32,6 @@ public class CarritoController {
         this.productosCarrito = productosCarrito;
     }
 	
-	public CarritoView getView() {
-		return view;
-	}
-	
 	public void mostrar() {
 		this.view.setVisible(true);
 	}

@@ -31,10 +31,6 @@ public class ProductoController {
 		this.view.setVisible(true);
 	}
 	
-	public ProductoView getView() {
-		return view;
-	}
-	
 	class Añadir implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			new CantidadController(productosCarrito, producto).mostrar();

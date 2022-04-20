@@ -1,5 +1,4 @@
 package view;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -60,13 +59,6 @@ public class TiendaProductosView extends JFrame {
 		contentPane.add(fttdBuscarProductos);
 
 		btnCuenta = new JButton(Idiomas.getTraduccionFormato("CUENTA"));
-		btnCuenta.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				SesionView sesionUI = new SesionView();
-				sesionUI.setVisible(true);
-			}
-		});
 		btnCuenta.setBounds(455, 12, 110, 21);
 		contentPane.add(btnCuenta);
 
@@ -141,6 +133,10 @@ public class TiendaProductosView extends JFrame {
 	
 	public void addAtrasListener(ActionListener al) {
 		btnAtras.addActionListener(al);
+	}
+	
+	public void addCuentaListener(ActionListener al) {
+		btnCuenta.addActionListener(al);
 	}
 	
 	public void insertarProductos(ArrayList<Producto> productos) {

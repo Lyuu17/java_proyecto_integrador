@@ -12,13 +12,15 @@ import javax.swing.JOptionPane;
 import app.Cuenta;
 import app.GestorBD;
 import app.Idiomas;
+import app.Principal;
 import view.SesionView;
 
 public class SesionController {
 	private SesionView view;
 	
 	public SesionController() {
-        this.view = new view.SesionView();
+        this.view = new SesionView();
+        this.view.setTitle(Principal.PROGRAMA_NOMBRE);
         this.view.addAccionListener(new Accion());
         this.view.addRegistrarseListener(new Registrarse());
     }

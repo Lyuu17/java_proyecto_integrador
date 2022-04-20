@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import app.Principal;
 import app.Producto;
 import view.ProductoView;
 
@@ -14,7 +15,8 @@ public class ProductoController {
 	private Producto producto;
 	
 	public ProductoController(ArrayList<Producto> productosCarrito, Producto p) {
-        this.view = new view.ProductoView();
+        this.view = new ProductoView();
+        this.view.setTitle(Principal.PROGRAMA_NOMBRE);
         this.view.setNombre(p.getNombre());
         this.view.setDescripcion(p.getDescripcion());
         this.view.setMasDatos(p.toString());

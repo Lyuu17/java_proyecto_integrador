@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.AbstractAction;
 
 import app.Idiomas;
+import app.Principal;
 import app.Producto;
 import view.CarritoView;
 
@@ -25,6 +26,7 @@ public class CarritoController {
 	
 	public CarritoController(ArrayList<Producto> productosCarrito) {
         this.view = new view.CarritoView(productosCarrito);
+        this.view.setTitle(Principal.PROGRAMA_NOMBRE);
         this.view.cargarCarritoProductos(tablaNombreColumnas, new BotonAñadir(), new BotonEliminar());
         
         this.productosCarrito = productosCarrito;

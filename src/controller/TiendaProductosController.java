@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.AbstractAction;
 
 import app.Idiomas;
+import app.Principal;
 import app.Producto;
 import model.TiendaProductosModel;
 import model.TiendasModel;
@@ -26,6 +27,7 @@ public class TiendaProductosController {
 	public TiendaProductosController(TiendaProductosModel model, TiendaProductosView view) {
 		this.model = model;
 		this.view = view;
+		this.view.setTitle(Principal.PROGRAMA_NOMBRE);
 		this.view.addAtrasListener(new Atras());
 		this.view.addCarritoListener(new Carrito());
 	}

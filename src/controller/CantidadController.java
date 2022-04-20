@@ -16,7 +16,7 @@ public class CantidadController {
         this.view = new CantidadView(p);
         this.productos = productos;
         this.producto = p;
-        
+        this.view.setTitle(Principal.PROGRAMA_NOMBRE);
         this.view.addAñadirListener(new AñadirCantidad());
     }
 	

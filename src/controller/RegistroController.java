@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import app.Cuenta;
 import app.GestorBD;
+import app.Principal;
 import view.RegistroView;
 
 public class RegistroController {
@@ -16,7 +17,7 @@ public class RegistroController {
 	
 	public RegistroController() {
         this.view = new view.RegistroView();
-        
+        this.view.setTitle(Principal.PROGRAMA_NOMBRE);
         this.view.addEnviarListener(new Enviar());
     }
 	

@@ -96,7 +96,7 @@ public class TiendaProductosView extends JFrame {
 		contentPane.add(btnAtras);
 
 		comboIdiomas = new JComboBox<String>();
-		comboIdiomas.setBounds(109, 324, 119, 23);
+		comboIdiomas.setBounds(109, 324, 131, 23);
 		comboIdiomas.setRenderer(new IdiomaRenderer());
 		comboIdiomas.addItem("Espanol");
 		comboIdiomas.addItem("English");

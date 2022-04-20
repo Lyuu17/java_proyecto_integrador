@@ -1,6 +1,6 @@
 package app;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import com.formdev.flatlaf.FlatLightLaf;
 
 import controller.TiendasController;
 import model.TiendasModel;
@@ -27,7 +27,9 @@ public class Principal {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
+	    
+	    FlatLightLaf.setup();
 
 	    new TiendasController(new TiendasModel(), new TiendasView()).mostrar();
 	}

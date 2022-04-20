@@ -11,10 +11,12 @@ import app.Idiomas;
 import app.Producto;
 import utils.ButtonColumn;
 
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JTable;
 import javax.swing.JLabel;
+import javax.swing.JButton;
 
 @SuppressWarnings("serial")
 public class CarritoView extends JFrame {
@@ -23,10 +25,9 @@ public class CarritoView extends JFrame {
 	private JLabel lblTotalPrecio;
 
 	private JTable tablaCarrito;
-	
-	private final JScrollPane scrollPane;
-	
+	private JScrollPane scrollPane;
 	private DefaultTableModel tablaDatos;
+	private JButton btnComprar;
 	
 	private ArrayList<Producto> productos;
 	
@@ -61,7 +62,15 @@ public class CarritoView extends JFrame {
 		lblTotalPrecio.setBounds(10, 271, 208, 14);
 		contentPane.add(lblTotalPrecio);
 		
+		btnComprar = new JButton("Comprar");
+		btnComprar.setBounds(324, 264, 98, 26);
+		contentPane.add(btnComprar);
+		
 		this.productos = productos;
+	}
+	
+	public void addComprarListener(ActionListener al) {
+		btnComprar.addActionListener(al);
 	}
 	
 	public void cargarCarritoProductos(String[] tablaNombreColumnas, AbstractAction actAñadir, AbstractAction actEliminar) {

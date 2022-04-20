@@ -3,6 +3,7 @@ package app;
 public class Cuenta {
 	private static int idTienda;
 	private static String usuario;
+	private static int usuarioID;
 	private static boolean iniciadoSesion;
 	private static boolean admin;
 	
@@ -22,6 +23,14 @@ public class Cuenta {
 		Cuenta.usuario = usuario;
 	}
 	
+	public static int getUsuarioID() {
+		return usuarioID;
+	}
+
+	public static void setUsuarioID(int usuarioID) {
+		Cuenta.usuarioID = usuarioID;
+	}
+
 	public static boolean isIniciadoSesion() {
 		return iniciadoSesion;
 	}

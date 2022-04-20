@@ -31,7 +31,8 @@ public class SesionController {
 	class Accion implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (!model.getCuentaPorUsuarioYContraseña(view.getUsuario(), view.getContraseña())) {
+			int id = model.getCuentaPorUsuarioYContraseña(view.getUsuario(), view.getContraseña());
+			if (id == -1) {
 				JOptionPane.showMessageDialog(view.getContentPane(), Idiomas.getTraduccionFormato("SESION_USUARIO_CONTRA_INVALIDA"), Idiomas.getTraduccionFormato("SESION_INICION_SESION_TITULO"), JOptionPane.ERROR_MESSAGE);
 				
 				return;
@@ -39,6 +40,7 @@ public class SesionController {
 
 			Cuenta.setIniciadoSesion(true);
 			Cuenta.setUsuario(view.getUsuario());
+			Cuenta.setUsuarioID(id);
 			
 			LocalTime tiempoAhora = LocalTime.now();
 			

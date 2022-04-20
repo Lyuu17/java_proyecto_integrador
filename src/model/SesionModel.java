@@ -9,22 +9,22 @@ public class SesionModel {
 	public SesionModel() {
 	}
 	
-	public boolean getCuentaPorUsuarioYContraseña(String usuario, String contraseña) {
-		ResultSet rs = GestorBD.consulta("SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?", usuario, 
+	public int getCuentaPorUsuarioYContraseña(String usuario, String contraseña) {
+		ResultSet rs = GestorBD.consulta("SELECT ID FROM usuarios WHERE usuario = ? AND contraseña = ?", usuario, 
 				utils.HashContraseña.hash(contraseña));
 
 		try {
 			if (!rs.next()) {
-				return false;
+				return -1;
 			}
 			else {
-				return true;
+				return rs.getInt("ID");
 			}
 		} catch (HeadlessException | SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			
-			return false;
+			return -1;
 		}
 	}
 }

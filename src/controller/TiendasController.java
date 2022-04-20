@@ -3,6 +3,9 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import app.Cuenta;
 import app.Idiomas;
 import app.Principal;
@@ -30,10 +33,40 @@ public class TiendasController {
 		this.view.setTitle(Principal.PROGRAMA_NOMBRE);
 		this.view.cargarListaTiendas(tablaNombreColumnas, this.model.getTiendas());
 		this.view.addSeleccionarTiendaListener(new SeleccionarTienda());
+		this.view.addActualizarTiendaListener(new ActualizarTiendas());
 	}
 	
 	public void mostrar() {
 		this.view.setVisible(true);
+	}
+	
+	class ActualizarTiendas implements DocumentListener {
+		@Override
+		public void insertUpdate(DocumentEvent e) {
+			actualizarListaTiendas();
+		}
+
+		@Override
+		public void removeUpdate(DocumentEvent e) {
+			actualizarListaTiendas();
+		}
+
+		@Override
+		public void changedUpdate(DocumentEvent e) {}
+		
+		private void actualizarListaTiendas() {
+			String strCP = view.getCodigoPostalIntroducido();
+			
+			int cp = 0;
+			try {
+				cp = Integer.parseInt(view.getCodigoPostalIntroducido());
+			}
+			catch(Exception e) {
+				
+			}
+			
+			view.cargarListaTiendas(tablaNombreColumnas, model.getTiendas(cp));
+		}
 	}
 
 	class SeleccionarTienda implements ActionListener {

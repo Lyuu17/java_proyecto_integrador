@@ -31,4 +31,15 @@ public class TiendasModel {
 	public ArrayList<Tienda> getTiendas() {
 		return tiendas;
 	}
+	
+	public ArrayList<Tienda> getTiendas(int cp) {
+		ArrayList<Tienda> tiendas = new ArrayList<Tienda>();
+		for(Tienda tienda : getTiendas()) {
+			if (tienda.getCodigo_postal() != cp && cp != 0) continue;
+			
+			tiendas.add(tienda);
+		}
+		
+		return tiendas;
+	}
 }

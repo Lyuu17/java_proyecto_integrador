@@ -32,6 +32,8 @@ public class TiendasView extends JFrame {
 	private JButton btnSeleccionarTienda;
 	
 	private JComboBox<String> comboIdiomas;
+
+	private PlaceHolderFormattedTextField fttdCP;
 	
 	public TiendasView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,39 +47,14 @@ public class TiendasView extends JFrame {
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 650, 205);
 		contentPane.add(scrollPane);
-		
-		tablaTiendas = new JTable() {
-			public boolean isCellEditable(int row, int column) {                
-                return false;               
-			};
-		};
 				
 		btnSeleccionarTienda = new JButton(Idiomas.getTraduccionFormato("SELECCIONAR_TIENDA"));
 		btnSeleccionarTienda.setBounds(132, 226, 163, 23);
 		contentPane.add(btnSeleccionarTienda);
 				
-		PlaceHolderFormattedTextField fttdCP = new PlaceHolderFormattedTextField();
+		fttdCP = new PlaceHolderFormattedTextField();
 		fttdCP.setPlaceholder(Idiomas.getTraduccionFormato("BUSCAR_POR_CP"));
 		fttdCP.setBounds(482, 227, 178, 20);
-		
-		fttdCP.getDocument().addDocumentListener(new DocumentListener() {
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				actualizarListaTiendas(scrollPane, fttdCP);
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				actualizarListaTiendas(scrollPane, fttdCP);
-			}
-
-			@Override
-			public void changedUpdate(DocumentEvent e) {}
-			
-			private void actualizarListaTiendas(JScrollPane scrollPane,
-					PlaceHolderFormattedTextField fttdCP) {
-			}
-		});
 		
 		contentPane.add(fttdCP);
 		
@@ -94,6 +71,10 @@ public class TiendasView extends JFrame {
 		btnSeleccionarTienda.addActionListener(al);
 	}
 	
+	public void addActualizarTiendaListener(DocumentListener dl) {
+		fttdCP.getDocument().addDocumentListener(dl);
+	}
+	
 	public int getTiendaFilaSeleccionada() {
 		return tablaTiendas.getSelectedRow();
 	}
@@ -103,6 +84,12 @@ public class TiendasView extends JFrame {
 		
 		insertarTiendas(tiendas);
 		
+		tablaTiendas = new JTable() {
+			public boolean isCellEditable(int row, int column) {                
+                return false;               
+			};
+		};
+
 		tablaTiendas.setModel(tablaDatos);
 		tablaTiendas.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		tablaTiendas.setFillsViewportHeight(true);
@@ -119,5 +106,9 @@ public class TiendasView extends JFrame {
 	public void insertarTienda(Tienda tienda) {
 		Object[] row = {tienda.getDireccion(), tienda.getNumero(), tienda.getCodigo_postal(), tienda.getPoblacion(), tienda.getCiudad()};
 		tablaDatos.addRow(row);
+	}
+
+	public String getCodigoPostalIntroducido() {
+		return fttdCP.getText();
 	}
 }

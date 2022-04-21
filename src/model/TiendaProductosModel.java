@@ -12,7 +12,6 @@ import app.ProductoComida;
 import app.ProductoLibro;
 import app.ProductoRopa;
 import app.ProductosCategorias;
-import app.Tienda;
 import utils.ImageIconResize;
 import view.TiendaProductosView;
 

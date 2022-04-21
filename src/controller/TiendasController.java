@@ -55,8 +55,6 @@ public class TiendasController {
 		public void changedUpdate(DocumentEvent e) {}
 		
 		private void actualizarListaTiendas() {
-			String strCP = view.getCodigoPostalIntroducido();
-			
 			int cp = 0;
 			try {
 				cp = Integer.parseInt(view.getCodigoPostalIntroducido());

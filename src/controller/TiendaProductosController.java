@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import javax.swing.AbstractAction;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.tree.DefaultMutableTreeNode;
-
 import app.Idiomas;
 import app.Principal;
 import app.Producto;

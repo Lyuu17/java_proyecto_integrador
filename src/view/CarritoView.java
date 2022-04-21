@@ -7,7 +7,6 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import app.Idiomas;
 import app.Producto;
 import utils.ButtonColumn;
 

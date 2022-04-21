@@ -42,6 +42,17 @@ public class TiendaProductosModel {
 		return productos;
 	}
 	
+	public ArrayList<Producto> getProductos(int categoria) {
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		for(Producto producto : getProductos()) {
+			if (producto.getCategoria() != categoria && categoria != 0) continue;
+			
+			productos.add(producto);
+		}
+		
+		return productos;
+	}
+	
 	public ArrayList<Producto> getProductosCarrito() {
 		return productosCarrito;
 	}

@@ -2,16 +2,21 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import app.Idiomas;
 import app.Principal;
 import app.Producto;
 import model.TiendaProductosModel;
 import model.TiendasModel;
+import utils.DefaultTreeNodeCategorias;
 import view.TiendaProductosView;
 import view.TiendasView;
 
@@ -33,7 +38,8 @@ public class TiendaProductosController {
 		this.view.addAtrasListener(new Atras());
 		this.view.addCarritoListener(new Carrito());
 		this.view.addCuentaListener(new Cuenta());
-		this.view.addActualizarProductosListener(new ActualizarProductos());
+		this.view.addActualizarProductosListener(new ActualizarProductosBusqueda());
+		this.view.addActualizarProductosCategoriasListener(new ActualizarProductosCategoria());
 	}
 	
 	public void mostrar() {
@@ -49,7 +55,7 @@ public class TiendaProductosController {
 		}
 	}
 	
-	class ActualizarProductos implements DocumentListener {
+	class ActualizarProductosBusqueda implements DocumentListener {
 		@Override
 		public void insertUpdate(DocumentEvent e) {
 			actualizarListaProductos();
@@ -68,6 +74,19 @@ public class TiendaProductosController {
 			
 			view.cargarListaProductos(tablaNombreColumnas, new Consultar(), model.getProductos(nombre));
 		}
+	}
+	
+	class ActualizarProductosCategoria extends MouseAdapter {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			if (e.getClickCount() != 1) return;
+			
+			DefaultTreeNodeCategorias node = (DefaultTreeNodeCategorias) view.getTreeNodeLastSelectedPathComponent();
+            if (node == null) return;
+            
+            ArrayList<Producto> productos = model.getProductos(node.getUUID());
+            view.cargarListaProductos(tablaNombreColumnas, new Consultar(), productos);
+        }
 	}
 	
 	@SuppressWarnings("serial")

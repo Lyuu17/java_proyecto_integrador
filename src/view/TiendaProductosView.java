@@ -1,6 +1,8 @@
 package view;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,7 +18,9 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import app.IdiomaRenderer;
 import app.Idiomas;
 import app.Producto;
+import app.ProductosCategorias;
 import utils.ButtonColumn;
+import utils.DefaultTreeNodeCategorias;
 import utils.ImageIconResize;
 import utils.JTreeExpand;
 import utils.NodeTreeCellRenderer;
@@ -45,6 +49,7 @@ public class TiendaProductosView extends JFrame {
 	private JButton btnCarrito;
 	private JButton btnAtras;
 	
+	private JTreeExpand treeCategorias;
 	private PlaceHolderFormattedTextField fttdBuscarProductos;
 
 	public TiendaProductosView() {
@@ -65,16 +70,16 @@ public class TiendaProductosView extends JFrame {
 		btnCuenta.setBounds(455, 12, 110, 21);
 		contentPane.add(btnCuenta);
 
-		DefaultMutableTreeNode nodeCategorias = new DefaultMutableTreeNode(Idiomas.getTraduccionFormato("CATEGORIAS"));
-		JTreeExpand treeCategorias = new JTreeExpand(nodeCategorias);
+		DefaultMutableTreeNode nodeCategorias = new DefaultTreeNodeCategorias(Idiomas.getTraduccionFormato("CATEGORIAS"), 0);
+		treeCategorias = new JTreeExpand(nodeCategorias);
 		treeCategorias.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		treeCategorias.setBorder(new LineBorder(new Color(0, 0, 0)));
 		treeCategorias.setBounds(10, 14, 131, 306);
 		treeCategorias.setCellRenderer(new NodeTreeCellRenderer("categorias"));
 
-		nodeCategorias.add(new DefaultMutableTreeNode(Idiomas.getTraduccionFormato("ROPA")));
-		nodeCategorias.add(new DefaultMutableTreeNode(Idiomas.getTraduccionFormato("COMIDA")));
-		nodeCategorias.add(new DefaultMutableTreeNode(Idiomas.getTraduccionFormato("LIBROS")));
+		nodeCategorias.add(new DefaultTreeNodeCategorias(Idiomas.getTraduccionFormato("ROPA"), ProductosCategorias.CAT_ROPA));
+		nodeCategorias.add(new DefaultTreeNodeCategorias(Idiomas.getTraduccionFormato("COMIDA"), ProductosCategorias.CAT_COMIDA));
+		nodeCategorias.add(new DefaultTreeNodeCategorias(Idiomas.getTraduccionFormato("LIBROS"), ProductosCategorias.CAT_LIBROS));
 
 		treeCategorias.expandTree(true);
 		contentPane.add(treeCategorias);
@@ -112,6 +117,14 @@ public class TiendaProductosView extends JFrame {
 	
 	public void addActualizarProductosListener(DocumentListener dl) {
 		fttdBuscarProductos.getDocument().addDocumentListener(dl);
+	}
+	
+	public void addActualizarProductosCategoriasListener(MouseAdapter ma) {
+		treeCategorias.addMouseListener(ma);
+	}
+	
+	public DefaultMutableTreeNode getTreeNodeLastSelectedPathComponent() {
+		return (DefaultMutableTreeNode) treeCategorias.getLastSelectedPathComponent();
 	}
 	
 	public void addIdiomaComboboxListener(ActionListener al) {

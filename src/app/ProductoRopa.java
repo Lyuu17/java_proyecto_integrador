@@ -7,7 +7,7 @@ public class ProductoRopa extends Producto {
 
 	public ProductoRopa(int id, String nombre, String descripcion, double precio, double rebaja, String fechaAñadido, int categoria, int cantidad, int cantidadMaxima, 
 			String talla, String color, String marca) {
-		super(id, nombre, descripcion, precio, rebaja, fechaAñadido, categoria, cantidad, cantidadMaxima);
+		super(id, nombre, descripcion, precio, rebaja, fechaAñadido, cantidad, cantidadMaxima, categoria);
 		this.talla = talla;
 		this.color = color;
 		this.marca = marca;

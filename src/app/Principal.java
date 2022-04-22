@@ -2,8 +2,10 @@ package app;
 import java.io.FileNotFoundException;
 import com.formdev.flatlaf.FlatLightLaf;
 
+import controller.LogoController;
 import controller.TiendasController;
 import model.TiendasModel;
+import view.LogoView;
 import view.TiendasView;
 
 /**
@@ -33,6 +35,6 @@ public class Principal {
 	    
 	    FlatLightLaf.setup();
 
-	    new TiendasController(new TiendasModel(), new TiendasView()).mostrar();
+	    new LogoController(null, new LogoView()).mostrar();
 	}
 }

@@ -2,6 +2,7 @@ package app;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.ImageIcon;
 import javax.swing.JList;
 import javax.swing.UIManager;
 
@@ -19,7 +20,11 @@ public class IdiomaRenderer extends DefaultListCellRenderer {
 	                                                boolean isSelected, boolean cellHasFocus) {
 	      super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
-	      this.setIcon(Idiomas.getIdiomaIcono(this.getText()));
+	      if (this.getText() != "") {
+	    	  ImageIcon icon = Idiomas.getIdiomaIcono(this.getText());
+		      if (icon != null) this.setIcon(icon);
+	      }
+
 	      if (!isSelected) {
 	          this.setBackground(index % 2 == 0 ? background : defaultBackground);
 	      }

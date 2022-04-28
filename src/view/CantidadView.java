@@ -11,6 +11,11 @@ import javax.swing.JFormattedTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 @SuppressWarnings("serial")
 public class CantidadView extends JFrame {
 
@@ -24,6 +29,10 @@ public class CantidadView extends JFrame {
 	private final JFormattedTextField fttdCantidad;
 	private final JLabel lblCantidadMaxima;
 
+	/**
+	 * 
+	 * @param p el producto
+	 */
 	public CantidadView(Producto p) {
 		this.producto = p;
 		
@@ -80,10 +89,18 @@ public class CantidadView extends JFrame {
 		contentPane.add(btnMenos);
 	}
 
+	/**
+	 * 
+	 * @param al ActionListener para el botón de Añadir
+	 */
 	public void addAñadirListener(ActionListener al) {
 		btnAñadir.addActionListener(al);
 	}
 	
+	/**
+	 * 
+	 * @return la cantidad en la entrada
+	 */
 	public String getCantidad() {
 		return fttdCantidad.getText();
 	}

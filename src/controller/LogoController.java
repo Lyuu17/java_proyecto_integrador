@@ -8,24 +8,42 @@ import model.TiendasModel;
 import view.LogoView;
 import view.TiendasView;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class LogoController {
 	private LogoModel model;
 	private LogoView view;
 	
+	/**
+	 * 
+	 * @param model
+	 * @param view
+	 */
 	public LogoController(LogoModel model, LogoView view) {
 		this.model = model;
 		this.view = view;
 		this.view.addContinuarListener(new Continuar());
 	}
 	
+	/**
+	 * mostrar()
+	 */
+	public void mostrar() {
+		this.view.setVisible(true);
+	}
+	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	private class Continuar implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			new TiendasController(new TiendasModel(), new TiendasView()).mostrar();
 		}
-	}
-
-	public void mostrar() {
-		this.view.setVisible(true);
 	}
 }

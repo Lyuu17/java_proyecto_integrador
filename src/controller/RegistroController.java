@@ -8,10 +8,18 @@ import app.Principal;
 import model.RegistroModel;
 import view.RegistroView;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class RegistroController {
 	private RegistroModel model;
 	private RegistroView view;
 	
+	/**
+	 * 
+	 */
 	public RegistroController() {
 		this.model = new RegistroModel();
         this.view = new RegistroView();
@@ -19,10 +27,18 @@ public class RegistroController {
         this.view.addEnviarListener(new Enviar());
     }
 	
+	/**
+	 * mostrar()
+	 */
 	public void mostrar() {
 		this.view.setVisible(true);
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	class Enviar implements ActionListener {
 		public void actionPerformed(ActionEvent evt) {
 			if(view.getNombre().isEmpty() ||

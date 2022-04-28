@@ -32,6 +32,11 @@ import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 @SuppressWarnings("serial")
 public class TiendaProductosView extends JFrame {
 
@@ -51,6 +56,9 @@ public class TiendaProductosView extends JFrame {
 	private JTreeExpand treeCategorias;
 	private PlaceHolderFormattedTextField fttdBuscarProductos;
 
+	/**
+	 * 
+	 */
 	public TiendaProductosView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 678, 393);
@@ -114,57 +122,112 @@ public class TiendaProductosView extends JFrame {
 		contentPane.add(scrollPane);
 	}
 	
+	/**
+	 * 
+	 * @param dl DocumentListener para el documento fttdBuscarProductos
+	 */
 	public void addActualizarProductosListener(DocumentListener dl) {
 		fttdBuscarProductos.getDocument().addDocumentListener(dl);
 	}
 	
+	/**
+	 * 
+	 * @param ma MouseAdapter para el JTree Categorias
+	 */
 	public void addActualizarProductosCategoriasListener(MouseAdapter ma) {
 		treeCategorias.addMouseListener(ma);
 	}
 	
+	/**
+	 * 
+	 * @return el nodo de arbol seleccionado del JTree Categorias
+	 */
 	public DefaultMutableTreeNode getTreeNodeLastSelectedPathComponent() {
 		return (DefaultMutableTreeNode) treeCategorias.getLastSelectedPathComponent();
 	}
 	
+	/**
+	 * 
+	 * @param al ActionListener para el combobox de idiomas
+	 */
 	public void addIdiomaComboboxListener(ActionListener al) {
 		comboIdiomas.addActionListener(al);
 	}
 	
+	/**
+	 * 
+	 * @return el texto de buscar productos
+	 */
 	public String getBuscarProductosTexto() {
 		return fttdBuscarProductos.getText();
 	}
 	
+	/**
+	 * 
+	 * @return el idioma seleccionado en el combobox de idiomas
+	 */
 	public int getIdiomaComboboxItemSeleccionado() {
 		return comboIdiomas.getSelectedIndex();
 	}
 	
+	/**
+	 * 
+	 * @param id el id del combobox de idiomas
+	 * @return el string que contiene el combobox
+	 */
 	public String getIdiomaComboboxItem(int id) {
 		return comboIdiomas.getItemAt(id);
 	}
 	
+	/**
+	 * 
+	 * @param al ActionListener para el boton btnCarrito
+	 */
 	public void addCarritoListener(ActionListener al) {
 		btnCarrito.addActionListener(al);
 	}
 	
+	/**
+	 * 
+	 * @param al ActionListener para el boton btnAtras
+	 */
 	public void addAtrasListener(ActionListener al) {
 		btnAtras.addActionListener(al);
 	}
 	
+	/**
+	 * 
+	 * @param al ActionListener para el boton btnCuenta
+	 */
 	public void addCuentaListener(ActionListener al) {
 		btnCuenta.addActionListener(al);
 	}
 	
+	/**
+	 * 
+	 * @param productos productos a insertar
+	 */
 	public void insertarProductos(ArrayList<Producto> productos) {
 		for(Producto producto : productos) {
 			insertarProducto(producto);
 		}
 	}
 	
+	/**
+	 * 
+	 * @param p producto a insertar
+	 */
 	public void insertarProducto(Producto p) {
 		Object[] row = {p.getIcono(), p.getNombre(), p.getPrecio() + "€", Idiomas.getTraduccionFormato("VER")};
 		tablaDatos.addRow(row);
 	}
 
+	/**
+	 * 
+	 * @param tablaNombreColumnas Array de String con el nombre de las columnas
+	 * @param actConsultar AbstractAction para el boton de columna Consultar
+	 * @param productos ArrayList de productos
+	 */
 	public void cargarListaProductos(String[] tablaNombreColumnas, AbstractAction actConsultar, ArrayList<Producto> productos) {
 		tablaDatos = new DefaultTableModel(tablaNombreColumnas, 0);
 		

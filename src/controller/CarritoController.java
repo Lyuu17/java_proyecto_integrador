@@ -14,6 +14,11 @@ import app.Producto;
 import model.CarritoModel;
 import view.CarritoView;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class CarritoController {
 	private CarritoModel model;
 	private CarritoView view;
@@ -29,6 +34,10 @@ public class CarritoController {
 			"" /*eliminar*/
 	};
 	
+	/**
+	 * 
+	 * @param productosCarrito
+	 */
 	public CarritoController(ArrayList<Producto> productosCarrito) {
 		this.model = new CarritoModel();
         this.view = new view.CarritoView(productosCarrito);
@@ -39,10 +48,18 @@ public class CarritoController {
         this.productosCarrito = productosCarrito;
     }
 	
+	/**
+	 * mostrar()
+	 */
 	public void mostrar() {
 		this.view.setVisible(true);
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	class Comprar implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (!Cuenta.isIniciadoSesion()) {
@@ -65,6 +82,11 @@ public class CarritoController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	@SuppressWarnings("serial")
 	class BotonAñadir extends AbstractAction {
 		public void actionPerformed(ActionEvent e)
@@ -80,6 +102,11 @@ public class CarritoController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	@SuppressWarnings("serial")
 	class BotonEliminar extends AbstractAction {
 		public void actionPerformed(ActionEvent e)

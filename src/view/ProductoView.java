@@ -12,6 +12,11 @@ import java.awt.Color;
 import java.awt.GridBagLayout;
 import javax.swing.SwingConstants;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 @SuppressWarnings("serial")
 public class ProductoView extends JFrame {
 
@@ -25,7 +30,7 @@ public class ProductoView extends JFrame {
 	private JButton btnAñadir;
 
 	/**
-	 * Create the frame.
+	 * 
 	 */
 	public ProductoView() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -77,22 +82,42 @@ public class ProductoView extends JFrame {
 		contentPane.add(btnAñadir);
 	}
 	
+	/**
+	 * 
+	 * @param al ActionListener para el botón btnAñadir
+	 */
 	public void addAñadirListener(ActionListener al) {
 		btnAñadir.addActionListener(al);
 	}
 	
+	/**
+	 * 
+	 * @param nombre el nombre
+	 */
 	public void setNombre(String nombre) {
 		lblNombre.setText(nombre);
 	}
 
+	/**
+	 * 
+	 * @param desc la descripción
+	 */
 	public void setDescripcion(String desc) {
 		lblDescripcion.setText(desc);
 	}
 
+	/**
+	 * 
+	 * @param masDatos los mas datos
+	 */
 	public void setMasDatos(String masDatos) {
 		lblMasDatos.setText(masDatos);
 	}
 
+	/**
+	 * 
+	 * @param icon el icono en ImageIcon
+	 */
 	public void setIcono(ImageIcon icon) {
 		lblImagen.setIcon(icon);
 	}

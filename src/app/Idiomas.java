@@ -21,15 +21,28 @@ public class Idiomas {
 	public static void init() {
 		memoria = new HashMap<String, Map<String, String>>();
 		iconos = new HashMap<String, ImageIcon>();
+		
+		/* idiomas por defecto */
 		iconos.put("Espanol", new ImageIcon(Idiomas.class.getResource("/images/spain.png")));
 		iconos.put("English", new ImageIcon(Idiomas.class.getResource("/images/uk.png")));
 
 	}
 	
+	/**
+	 * cargarTraducciones del archivo 'idiomas.dat' por defecto
+	 * @return true/false
+	 * @throws FileNotFoundException
+	 */
 	public static boolean cargarTraducciones() throws FileNotFoundException {
 		return cargarTraducciones("idiomas.dat");
 	}
 	
+	/**
+	 * 
+	 * @param archivo archivo a leer
+	 * @return true/false
+	 * @throws FileNotFoundException
+	 */
 	public static boolean cargarTraducciones(String archivo) throws FileNotFoundException {
 		File f = new File(archivo);
 		if (!f.exists()) {
@@ -72,6 +85,12 @@ public class Idiomas {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * @param id id del mensaje
+	 * @param args args para darle formato
+	 * @return el mensaje formateado
+	 */
 	public static String getTraduccionFormato(String id, Object... args) {
 		String str = getTraduccion(id);
 		
@@ -80,7 +99,9 @@ public class Idiomas {
 	}
 	
 	/**
-	 * @return the traduccion
+	 * 
+	 * @param id id del mensaje
+	 * @return el mensaje
 	 */
 	public static String getTraduccion(String id) {
 		//todo: excepciones?
@@ -91,7 +112,10 @@ public class Idiomas {
 	}
 	
 	/**
-	 * @return the traduccion
+	 * 
+	 * @param idioma el idioma
+	 * @param id el id del mensaje
+	 * @return el mensaje del idioma
 	 */
 	public static String getTraduccion(String idioma, String id) {
 		if (!memoria.containsKey(idioma)) return "<<ERROR>>";
@@ -101,19 +125,24 @@ public class Idiomas {
 	}
 
 	/**
-	 * @return the idiomaActual
+	 * @return el idiomaActual
 	 */
 	public static String getIdiomaActual() {
 		return idiomaActual;
 	}
 
 	/**
-	 * @param idiomaActual the idiomaActual to set
+	 * @param idiomaActual establecer el idioma actual
 	 */
 	public static void setIdiomaActual(String idiomaActual) {
 		Idiomas.idiomaActual = idiomaActual;
 	}
 	
+	/**
+	 * 
+	 * @param idioma
+	 * @return el ImageIcon del idioma
+	 */
 	public static ImageIcon getIdiomaIcono(String idioma) {
 		if (!iconos.containsKey(idioma)) return null;
 		return iconos.get(idioma);

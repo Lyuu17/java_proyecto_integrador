@@ -13,6 +13,11 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 @SuppressWarnings("serial")
 public class SesionView extends JFrame {
 
@@ -69,18 +74,34 @@ public class SesionView extends JFrame {
 		contentPane.add(btnRegistrarse);
 	}
 	
+	/**
+	 * 
+	 * @param al ActionListener para el btnAccion
+	 */
 	public void addAccionListener(ActionListener al) {
 		btnAccion.addActionListener(al);
 	}
 	
+	/**
+	 * 
+	 * @param al ActionListener para el btnRegistrarse
+	 */
 	public void addRegistrarseListener(ActionListener al) {
 		btnRegistrarse.addActionListener(al);
 	}
 
+	/**
+	 * 
+	 * @return el usuario
+	 */
 	public String getUsuario() {
 		return fttdUsuario.getText();
 	}
 
+	/**
+	 * 
+	 * @return la contraseña
+	 */
 	public String getContraseña() {
 		return fttdContraseña.getText();
 	}

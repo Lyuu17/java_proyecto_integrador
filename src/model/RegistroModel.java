@@ -7,10 +7,28 @@ import java.sql.SQLException;
 import app.Cuenta;
 import app.GestorBD;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class RegistroModel {
 	public RegistroModel() {
 	}
 	
+	/**
+	 * 
+	 * @param usuario
+	 * @param contraseña
+	 * @param nombre
+	 * @param apellidos
+	 * @param email
+	 * @param numTlf
+	 * @param direccion
+	 * @param ciudad
+	 * @param codigoPostal
+	 * @return
+	 */
 	public boolean registrarUsuario(String usuario, String contraseña, String nombre, String apellidos, String email, String numTlf, String direccion, String ciudad, String codigoPostal) {
 		Connection conn = GestorBD.getConexion();
 		PreparedStatement stmt;

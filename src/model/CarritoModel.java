@@ -9,10 +9,20 @@ import app.Cuenta;
 import app.GestorBD;
 import app.Producto;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class CarritoModel {
 	public CarritoModel() {
 	}
 	
+	/**
+	 * 
+	 * @param productos ArrayList de productos
+	 * @return
+	 */
 	public boolean comprar(ArrayList<Producto> productos) {
 		Connection conn = GestorBD.getConexion();
 		PreparedStatement stmt;

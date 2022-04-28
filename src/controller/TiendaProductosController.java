@@ -18,6 +18,11 @@ import utils.DefaultTreeNodeCategorias;
 import view.TiendaProductosView;
 import view.TiendasView;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class TiendaProductosController {
 	private TiendaProductosModel model;
 	private TiendaProductosView view;
@@ -29,6 +34,11 @@ public class TiendaProductosController {
 			"" /*consultar*/
 	};
 	
+	/**
+	 * 
+	 * @param model
+	 * @param view
+	 */
 	public TiendaProductosController(TiendaProductosModel model, TiendaProductosView view) {
 		this.model = model;
 		this.view = view;
@@ -40,11 +50,19 @@ public class TiendaProductosController {
 		this.view.addActualizarProductosCategoriasListener(new ActualizarProductosCategoria());
 	}
 	
+	/**
+	 * mostrar()
+	 */
 	public void mostrar() {
 		this.view.setVisible(true);
 		this.view.cargarListaProductos(tablaNombreColumnas, new Consultar(), this.model.getProductos());
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	class Atras implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -53,6 +71,11 @@ public class TiendaProductosController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	class ActualizarProductosBusqueda implements DocumentListener {
 		@Override
 		public void insertUpdate(DocumentEvent e) {
@@ -74,6 +97,11 @@ public class TiendaProductosController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	class ActualizarProductosCategoria extends MouseAdapter {
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -87,6 +115,11 @@ public class TiendaProductosController {
         }
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	@SuppressWarnings("serial")
 	class Consultar extends AbstractAction {
 		public void actionPerformed(ActionEvent e)
@@ -98,6 +131,11 @@ public class TiendaProductosController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	class IdiomaSelector implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			int index = view.getIdiomaComboboxItemSeleccionado();
@@ -108,12 +146,22 @@ public class TiendaProductosController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	class Carrito implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			new CarritoController(model.getProductosCarrito()).mostrar();
 		}
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	class Cuenta implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			new SesionController().mostrar();

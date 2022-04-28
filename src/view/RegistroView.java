@@ -12,6 +12,11 @@ import com.toedter.calendar.JDateChooser;
 
 import app.Idiomas;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 @SuppressWarnings("serial")
 public class RegistroView extends JFrame {
 
@@ -25,6 +30,9 @@ public class RegistroView extends JFrame {
 	
 	private final JButton btnEnviar;
 
+	/**
+	 * 
+	 */
 	public RegistroView() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 421, 349);
@@ -142,50 +150,90 @@ public class RegistroView extends JFrame {
 		contentPane.add(dateFechaNac);
 	}
 	
+	/**
+	 * 
+	 * @param al ActionListener para el btnEnviar
+	 */
 	public void addEnviarListener(ActionListener al) {
 		btnEnviar.addActionListener(al);
 	}
 
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
+	/**
+	 * 
+	 * @return el usuario
+	 */
 	public String getUsuario() {
 		return fttdUsuario.getText();
 	}
 
+	/**
+	 * 
+	 * @return la contraseña
+	 */
 	public String getContraseña() {
 		return fttdContraseña.getText();
 	}
 
+	/**
+	 * 
+	 * @return el nombre
+	 */
 	public String getNombre() {
 		return fttdNombre.getText();
 	}
 
+	/**
+	 * 
+	 * @return los apellidos
+	 */
 	public String getApellidos() {
 		return fttdApellidos.getText();
 	}
 
+	/**
+	 * 
+	 * @return el email
+	 */
 	public String getEmail() {
 		return fttdEmail.getText();
 	}
 
+	/**
+	 * 
+	 * @return el num tlf
+	 */
 	public String getNumTlf() {
 		return fttdNumTlf.getText();
 	}
 
+	/**
+	 * 
+	 * @return la direccion
+	 */
 	public String getDireccion() {
 		return fttdDireccion1.getText();
 	}
 
+	/**
+	 * 
+	 * @return la ciudad
+	 */
 	public String getCiudad() {
 		return fttdCiudad.getText();
 	}
-
+	
+	/**
+	 * 
+	 * @return el codigo postal
+	 */
 	public String getCodigoPostal() {
 		return fttdCodigoPostal.getText();
 	}
 
+	/**
+	 * 
+	 * @return la fecha de nacimiento
+	 */
 	public String getFechaNac() {
 		return dateFechaNac.toString();
 	}

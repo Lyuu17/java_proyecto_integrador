@@ -1,8 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,8 +13,12 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 @SuppressWarnings("serial")
 public class LogoView extends JFrame {
 
@@ -24,6 +26,9 @@ public class LogoView extends JFrame {
 
 	private JButton btnInvitado;
 	
+	/**
+	 * 
+	 */
 	public LogoView() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 272);
@@ -44,6 +49,10 @@ public class LogoView extends JFrame {
 		contentPane.add(btnInvitado, BorderLayout.SOUTH);
 	}
 	
+	/**
+	 * 
+	 * @param al ActionListener para el botón btnInvitado
+	 */
 	public void addContinuarListener(ActionListener al) {
 		btnInvitado.addActionListener(al);
 	}

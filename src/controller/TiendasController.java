@@ -14,6 +14,11 @@ import model.TiendasModel;
 import view.TiendaProductosView;
 import view.TiendasView;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class TiendasController {
 	private TiendasModel model;
 	private TiendasView view;
@@ -25,6 +30,11 @@ public class TiendasController {
             Idiomas.getTraduccionFormato("POBLACION"),
             Idiomas.getTraduccionFormato("CIUDAD")};
 
+	/**
+	 * 
+	 * @param model
+	 * @param view
+	 */
 	public TiendasController(TiendasModel model, TiendasView view) {
 		this.model = model;
 		this.view = view;
@@ -36,10 +46,18 @@ public class TiendasController {
 		this.view.addActualizarTiendaListener(new ActualizarTiendas());
 	}
 	
+	/**
+	 * mostrar()
+	 */
 	public void mostrar() {
 		this.view.setVisible(true);
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	class ActualizarTiendas implements DocumentListener {
 		@Override
 		public void insertUpdate(DocumentEvent e) {
@@ -67,6 +85,11 @@ public class TiendasController {
 		}
 	}
 
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	class SeleccionarTienda implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

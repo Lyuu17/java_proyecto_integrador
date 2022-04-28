@@ -5,10 +5,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import app.GestorBD;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class SesionModel {
 	public SesionModel() {
 	}
 	
+	/**
+	 * 
+	 * @param usuario
+	 * @param contraseña
+	 * @return
+	 */
 	public int getCuentaPorUsuarioYContraseña(String usuario, String contraseña) {
 		ResultSet rs = GestorBD.consulta("SELECT ID FROM usuarios WHERE usuario = ? AND contraseña = ?", usuario, 
 				utils.HashContraseña.hash(contraseña));

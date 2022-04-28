@@ -1,9 +1,30 @@
 package app;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class ProductoLibro extends Producto{
 	private String autor;
 	private int numeroPaginas;
 	private String editorial;
+	
+	/**
+	 * 
+	 * @param id
+	 * @param nombre
+	 * @param descripcion
+	 * @param precio
+	 * @param rebaja
+	 * @param fechaAñadido
+	 * @param categoria
+	 * @param cantidad
+	 * @param cantidadMaxima
+	 * @param autor
+	 * @param numeroPaginas
+	 * @param editorial
+	 */
 	public ProductoLibro(int id, String nombre, String descripcion, double precio, double rebaja, String fechaAñadido, int categoria, int cantidad, int cantidadMaxima, 
 			String autor, int numeroPaginas, String editorial) {
 		super(id, nombre, descripcion, precio, rebaja, fechaAñadido, cantidad, cantidadMaxima, categoria);

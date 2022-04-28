@@ -12,10 +12,18 @@ import app.Principal;
 import model.SesionModel;
 import view.SesionView;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class SesionController {
 	private SesionModel model;
 	private SesionView view;
 	
+	/**
+	 * 
+	 */
 	public SesionController() {
 		this.model = new SesionModel();
         this.view = new SesionView();
@@ -24,10 +32,18 @@ public class SesionController {
         this.view.addRegistrarseListener(new Registrarse());
     }
 	
+	/**
+	 * mostrar()
+	 */
 	public void mostrar() {
 		this.view.setVisible(true);
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	class Accion implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -52,6 +68,11 @@ public class SesionController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	class Registrarse implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

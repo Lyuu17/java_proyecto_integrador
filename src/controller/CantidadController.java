@@ -7,11 +7,21 @@ import app.Principal;
 import app.Producto;
 import view.CantidadView;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class CantidadController {
 	private CantidadView view;
 	private ArrayList<Producto> productos;
 	private Producto producto;
 	
+	/**
+	 * 
+	 * @param productos
+	 * @param p
+	 */
 	public CantidadController(ArrayList<Producto> productos, Producto p) {
         this.view = new CantidadView(p);
         this.productos = productos;
@@ -20,10 +30,18 @@ public class CantidadController {
         this.view.addAñadirListener(new AñadirCantidad());
     }
 	
+	/**
+	 * mostrar()
+	 */
 	public void mostrar() {
 		this.view.setVisible(true);
 	}
 	
+	/**
+	 * 
+	 * @author daw
+	 *
+	 */
 	class AñadirCantidad implements ActionListener {
 		public void actionPerformed(ActionEvent evt) {
 			try {

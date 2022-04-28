@@ -15,6 +15,11 @@ import app.ProductosCategorias;
 import utils.ImageIconResize;
 import view.TiendaProductosView;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class TiendaProductosModel {
 	private ArrayList<Producto> productos = null;
 	private ArrayList<Producto> productosCarrito = null;
@@ -26,10 +31,20 @@ public class TiendaProductosModel {
 		cargarProductos();
 	}
 	
+	/**
+	 * 
+	 * @return los productos
+	 */
 	public ArrayList<Producto> getProductos() {
 		return productos;
 	}
 	
+	
+	/**
+	 * 
+	 * @param nombre buscar por nombre los productos
+	 * @return
+	 */
 	public ArrayList<Producto> getProductos(String nombre) {
 		ArrayList<Producto> productos = new ArrayList<Producto>();
 		for(Producto producto : getProductos()) {
@@ -41,6 +56,11 @@ public class TiendaProductosModel {
 		return productos;
 	}
 	
+	/**
+	 * 
+	 * @param categoria buscar por categoria los productos
+	 * @return
+	 */
 	public ArrayList<Producto> getProductos(int categoria) {
 		ArrayList<Producto> productos = new ArrayList<Producto>();
 		for(Producto producto : getProductos()) {
@@ -52,10 +72,17 @@ public class TiendaProductosModel {
 		return productos;
 	}
 	
+	/**
+	 * 
+	 * @return los productos en el carrito
+	 */
 	public ArrayList<Producto> getProductosCarrito() {
 		return productosCarrito;
 	}
 	
+	/**
+	 * cargarProductos()
+	 */
 	public void cargarProductos() {
 		ResultSet rs = GestorBD.consulta("SELECT * FROM productos_tienda "
 				+ "JOIN productos ON productos.id = productos_tienda.producto_id "

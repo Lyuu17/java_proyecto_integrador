@@ -34,6 +34,9 @@ public class TiendasView extends JFrame {
 
 	private PlaceHolderFormattedTextField fttdCP;
 	
+	/**
+	 * 
+	 */
 	public TiendasView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 681, 293);
@@ -66,18 +69,35 @@ public class TiendasView extends JFrame {
 		contentPane.add(comboIdiomas);
 	}
 	
+	/**
+	 * 
+	 * @param al ActionListener para el boton btnSeleccionarTienda
+	 */
 	public void addSeleccionarTiendaListener(ActionListener al) {
 		btnSeleccionarTienda.addActionListener(al);
 	}
 	
+	/**
+	 * 
+	 * @param dl DocumentListener para el documento fttdCP
+	 */
 	public void addActualizarTiendaListener(DocumentListener dl) {
 		fttdCP.getDocument().addDocumentListener(dl);
 	}
 	
+	/**
+	 * 
+	 * @return el id de la fila seleccionada en la JTable Tiendas
+	 */
 	public int getTiendaFilaSeleccionada() {
 		return tablaTiendas.getSelectedRow();
 	}
 	
+	/**
+	 * 
+	 * @param tablaNombreColumnas Array de String con el nombre de las oclumnas
+	 * @param tiendas ArrayList con las Tiendas
+	 */
 	public void cargarListaTiendas(String tablaNombreColumnas[], ArrayList<Tienda> tiendas) {
 		tablaDatos = new DefaultTableModel(tablaNombreColumnas, 0);
 		
@@ -96,17 +116,29 @@ public class TiendasView extends JFrame {
 		scrollPane.setViewportView(tablaTiendas);
 	}
 	
+	/**
+	 * 
+	 * @param tiendas ArrayList de tiendas a añadir
+	 */
 	public void insertarTiendas(ArrayList<Tienda> tiendas) {
 		for(Tienda tienda : tiendas) {
 			insertarTienda(tienda);
 		}
 	}
 	
+	/**
+	 * 
+	 * @param tienda la tienda a insertar
+	 */
 	public void insertarTienda(Tienda tienda) {
 		Object[] row = {tienda.getDireccion(), tienda.getNumero(), tienda.getCodigo_postal(), tienda.getPoblacion(), tienda.getCiudad()};
 		tablaDatos.addRow(row);
 	}
 
+	/**
+	 * 
+	 * @return el codigo postal introducido en String
+	 */
 	public String getCodigoPostalIntroducido() {
 		return fttdCP.getText();
 	}

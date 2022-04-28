@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import app.GestorBD;
 import app.Tienda;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class TiendasModel {
 	private ArrayList<Tienda> tiendas;
 	
@@ -14,6 +19,9 @@ public class TiendasModel {
 		this.tiendas = new ArrayList<Tienda>();
 	}
 	
+	/**
+	 * cargarTiendas()
+	 */
 	public void cargarTiendas() {
 		String query = "SELECT direccion, numero, codigo_postal, poblacion, ciudad FROM tiendas";
 
@@ -28,10 +36,19 @@ public class TiendasModel {
 		}
 	}
 
+	/**
+	 * 
+	 * @return la lista de tiendas
+	 */
 	public ArrayList<Tienda> getTiendas() {
 		return tiendas;
 	}
 	
+	/**
+	 * 
+	 * @param cp el código postal de la tienda
+	 * @return las tiendas
+	 */
 	public ArrayList<Tienda> getTiendas(int cp) {
 		ArrayList<Tienda> tiendas = new ArrayList<Tienda>();
 		for(Tienda tienda : getTiendas()) {

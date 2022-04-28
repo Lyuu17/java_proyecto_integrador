@@ -3,10 +3,7 @@ import java.io.FileNotFoundException;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import controller.LogoController;
-import controller.TiendasController;
-import model.TiendasModel;
 import view.LogoView;
-import view.TiendasView;
 
 /**
  * 
@@ -33,6 +30,7 @@ public class Principal {
 			e.printStackTrace();
 		}
 	    
+	    /* look'n'feel */
 	    FlatLightLaf.setup();
 
 	    new LogoController(null, new LogoView()).mostrar();

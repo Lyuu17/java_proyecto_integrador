@@ -17,6 +17,11 @@ import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 @SuppressWarnings("serial")
 public class CarritoView extends JFrame {
 
@@ -31,7 +36,8 @@ public class CarritoView extends JFrame {
 	private ArrayList<Producto> productos;
 	
 	/**
-	 * Create the frame.
+	 * 
+	 * @param productos los productos
 	 */
 	public CarritoView(ArrayList<Producto> productos) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -68,10 +74,21 @@ public class CarritoView extends JFrame {
 		this.productos = productos;
 	}
 	
+	/**
+	 * 
+	 * @param al ActionListener para el botón btnComprar
+	 */
 	public void addComprarListener(ActionListener al) {
 		btnComprar.addActionListener(al);
 	}
 	
+
+	/**
+	 * 
+	 * @param tablaNombreColumnas Array de String con el nombre de las columnas
+	 * @param actAñadir AbstractAction del botón Añadir
+	 * @param actEliminar AbstractAction del botón Eliminar
+	 */
 	public void cargarCarritoProductos(String[] tablaNombreColumnas, AbstractAction actAñadir, AbstractAction actEliminar) {
 		tablaDatos = new DefaultTableModel(tablaNombreColumnas, 0);
 
@@ -87,6 +104,9 @@ public class CarritoView extends JFrame {
 		calcularPrecioTotal();
 	}
 
+	/**
+	 * calcularPrecioTotal()
+	 */
 	public void calcularPrecioTotal() {
 		double PrecioTotal = 0;
 		for (Producto p : productos) {
@@ -95,28 +115,50 @@ public class CarritoView extends JFrame {
 		lblTotalPrecio.setText("Precio Total: " + PrecioTotal + "€");
 	}
 
+	/**
+	 * Insertar productos de una ArrayList a la JTable
+	 * @param productos los productos
+	 */
 	public void insertarProductos(ArrayList<Producto> productos) {
 		for(Producto producto : productos) {
 			insertarProducto(producto);
 		}
 	}
 	
+	/**
+	 * Insertar un producto a la JTable
+	 * @param p el producto
+	 */
 	public void insertarProducto(Producto p) {
 		Object[] row = {p.getIcono(), p.getNombre(), (p.getPrecio() * p.getCantidad()) + "€", p.getCantidad(), "+", "-"};
 		tablaDatos.addRow(row);
 	}
 	
+	/**
+	 * El objeto con el formato de columnas de la JTable
+	 * @param p el producto
+	 * @return
+	 */
 	public Object[] crearFilaObjeto(Producto p) {
 		Object[] row = {p.getIcono(), p.getNombre(), (p.getPrecio() * p.getCantidad()) + "€", p.getCantidad(), "+", "-"};
 		return row;
 	}
 
+	/**
+	 * Actualizar una fila de la JTable y calcular el precio total de nuevo
+	 * @param id id de la fila
+	 * @param row Objeto de la fila
+	 */
 	public void actualizarFilaTabla(int id, Object[] row) {
 		tablaDatos.removeRow(id);
 		tablaDatos.insertRow(id, row);
 		calcularPrecioTotal();
 	}
 	
+	/**
+	 * Borrar una fila
+	 * @param id id de la fila
+	 */
 	public void eliminarFilaTabla(int id) {
 		tablaDatos.removeRow(id);
 	}

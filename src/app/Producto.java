@@ -1,6 +1,11 @@
 package app;
 import javax.swing.ImageIcon;
 
+/**
+ * 
+ * @author daw
+ *
+ */
 public class Producto {
 	private int id;
 	private String nombre;
@@ -14,6 +19,18 @@ public class Producto {
 	
 	private ImageIcon icono;
 
+	/**
+	 * 
+	 * @param id
+	 * @param nombre
+	 * @param descripcion
+	 * @param precio
+	 * @param rebaja
+	 * @param fechaAñadido
+	 * @param cantidad
+	 * @param cantidadMaxima
+	 * @param categoria
+	 */
 	public Producto(int id, String nombre, String descripcion, double precio, double rebaja, String fechaAñadido, int cantidad, int cantidadMaxima, int categoria) {
 		this.id = id;
 		this.nombre = nombre;

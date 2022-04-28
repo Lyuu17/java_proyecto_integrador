@@ -93,7 +93,7 @@ public class GestorBD {
 	 * 
 	 * @param stmt statement preparado
 	 * @param paramArray
-	 * @return update
+	 * @return el valor retornado de executeUpdate
 	 */
 	public static int consulta(PreparedStatement stmt, String... paramArray) {
 		int res = 0;

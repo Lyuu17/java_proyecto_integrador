@@ -39,6 +39,8 @@ public class LogoController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			new TiendasController(new TiendasModel(), new TiendasView()).mostrar();
+			
+			view.dispose();
 		}
 	}
 }

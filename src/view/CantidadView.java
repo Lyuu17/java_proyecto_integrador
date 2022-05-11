@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import app.Idiomas;
 import app.Producto;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -44,11 +45,11 @@ public class CantidadView extends JFrame {
 		fttdCantidad.setHorizontalAlignment(SwingConstants.RIGHT);
 		contentPane.add(fttdCantidad);
 		
-		btnAñadir = new JButton("A\u00F1adir");
+		btnAñadir = new JButton(Idiomas.getTraduccionFormato("AÑADIR"));
 		btnAñadir.setBounds(10, 68, 237, 23);
 		contentPane.add(btnAñadir);
 		
-		JLabel lblCantidad = new JLabel("Cantidad");
+		JLabel lblCantidad = new JLabel(Idiomas.getTraduccionFormato("CANTIDAD"));
 		lblCantidad.setBounds(10, 32, 60, 14);
 		contentPane.add(lblCantidad);
 

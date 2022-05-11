@@ -23,12 +23,7 @@ public class TiendasController {
 	private TiendasModel model;
 	private TiendasView view;
 	
-	String[] tablaNombreColumnas = {
-			Idiomas.getTraduccionFormato("DIRECCION"),
-            "Nº",
-            Idiomas.getTraduccionFormato("CODIGO_POSTAL"),
-            Idiomas.getTraduccionFormato("POBLACION"),
-            Idiomas.getTraduccionFormato("CIUDAD")};
+	String[] tablaNombreColumnas = null;
 
 	/**
 	 * 
@@ -40,10 +35,24 @@ public class TiendasController {
 		this.view = view;
 
 		this.model.cargarTiendas();
+		
+		this.inicializarVista();
+	}
+	
+	private void inicializarVista() {
+		if (view == null) return;
+		
+		tablaNombreColumnas = new String[]{Idiomas.getTraduccionFormato("DIRECCION"),
+	            "Nº",
+	            Idiomas.getTraduccionFormato("CODIGO_POSTAL"),
+	            Idiomas.getTraduccionFormato("POBLACION"),
+	            Idiomas.getTraduccionFormato("CIUDAD")};
+		
 		this.view.setTitle(Principal.PROGRAMA_NOMBRE);
 		this.view.cargarListaTiendas(tablaNombreColumnas, this.model.getTiendas());
 		this.view.addSeleccionarTiendaListener(new SeleccionarTienda());
 		this.view.addActualizarTiendaListener(new ActualizarTiendas());
+		this.view.addIdiomaComboboxListener(new IdiomaSelector());
 	}
 	
 	/**
@@ -88,6 +97,21 @@ public class TiendasController {
 			Cuenta.setTiendaID(view.getTiendaFilaSeleccionada());
 			
 			new TiendaProductosController(new TiendaProductosModel(), new TiendaProductosView()).mostrar();
+		}
+	}
+	
+	class IdiomaSelector implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			int index = view.getIdiomaComboboxItemSeleccionado();
+			String idiomaSeleccionado = view.getIdiomaComboboxItem(index);
+			if (idiomaSeleccionado.equals(Idiomas.getIdiomaActual())) return;
+
+			Idiomas.setIdiomaActual(idiomaSeleccionado);
+			
+			view.dispose();
+			view = new TiendasView();
+			inicializarVista();
+			mostrar();
 		}
 	}
 }

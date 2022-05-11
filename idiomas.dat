@@ -35,8 +35,10 @@ CANTIDAD = Cantidad
 CARRITO_COMPRA_TITULO = Carrito
 NO_INICIADO_SESION = Necesitas iniciar sesión para realizar tal acción.
 CARRITO_COMPRA_FALLO = Fallo al realizar la compra.
-CARRITO_COMPRA_OK = Compra exitosa.
+CARRITO_COMPRA_OK = Compra exitosa. 
 CONTINUAR_INVITADO = Continuar como invitado
+AÑADIR = Añadir
+PRECIO_TOTAL = Precio Total: %.2f €
 
 [English]
 BIENVENIDO = Welcome, %s. You logged in at %s.
@@ -77,3 +79,5 @@ NO_INICIADO_SESION = You have to be logged in to do that.
 CARRITO_COMPRA_FALLO = Failed doing the buy.
 CARRITO_COMPRA_OK = Bought successful.
 CONTINUAR_INVITADO = Continue as Guest
+AÑADIR = Add
+PRECIO_TOTAL = Total Price: %.2f €

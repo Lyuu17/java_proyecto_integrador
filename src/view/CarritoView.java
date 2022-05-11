@@ -7,6 +7,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import app.Idiomas;
 import app.Producto;
 import utils.ButtonColumn;
 
@@ -108,11 +109,12 @@ public class CarritoView extends JFrame {
 	 * calcularPrecioTotal()
 	 */
 	public void calcularPrecioTotal() {
-		double PrecioTotal = 0;
+		double precioTotal = 0;
 		for (Producto p : productos) {
-			PrecioTotal += p.getPrecio()*p.getCantidad();
+			precioTotal += p.getPrecio()*p.getCantidad();
 		}
-		lblTotalPrecio.setText("Precio Total: " + PrecioTotal + "€");
+
+		lblTotalPrecio.setText(Idiomas.getTraduccionFormato("PRECIO_TOTAL", precioTotal));
 	}
 
 	/**

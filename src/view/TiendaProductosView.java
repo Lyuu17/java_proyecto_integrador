@@ -14,7 +14,6 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import app.IdiomaRenderer;
 import app.Idiomas;
 import app.Producto;
 import app.ProductosCategorias;
@@ -28,7 +27,6 @@ import utils.PlaceHolderFormattedTextField;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
-import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -41,8 +39,6 @@ import javax.swing.JTable;
 public class TiendaProductosView extends JFrame {
 
 	private JPanel contentPane;
-
-	private JComboBox<String> comboIdiomas;
 	
 	private JButton btnCuenta;
 	
@@ -101,13 +97,6 @@ public class TiendaProductosView extends JFrame {
 		btnAtras.setBounds(10, 324, 89, 23);
 
 		contentPane.add(btnAtras);
-
-		comboIdiomas = new JComboBox<String>();
-		comboIdiomas.setBounds(109, 324, 131, 23);
-		comboIdiomas.setRenderer(new IdiomaRenderer());
-		comboIdiomas.addItem("Espanol");
-		comboIdiomas.addItem("English");
-		contentPane.add(comboIdiomas);
 		
 		btnCarrito = new JButton();
 		btnCarrito.setBounds(577, 13, 68, 46);
@@ -148,35 +137,10 @@ public class TiendaProductosView extends JFrame {
 	
 	/**
 	 * 
-	 * @param al ActionListener para el combobox de idiomas
-	 */
-	public void addIdiomaComboboxListener(ActionListener al) {
-		comboIdiomas.addActionListener(al);
-	}
-	
-	/**
-	 * 
 	 * @return el texto de buscar productos
 	 */
 	public String getBuscarProductosTexto() {
 		return fttdBuscarProductos.getText();
-	}
-	
-	/**
-	 * 
-	 * @return el idioma seleccionado en el combobox de idiomas
-	 */
-	public int getIdiomaComboboxItemSeleccionado() {
-		return comboIdiomas.getSelectedIndex();
-	}
-	
-	/**
-	 * 
-	 * @param id el id del combobox de idiomas
-	 * @return el string que contiene el combobox
-	 */
-	public String getIdiomaComboboxItem(int id) {
-		return comboIdiomas.getItemAt(id);
 	}
 	
 	/**

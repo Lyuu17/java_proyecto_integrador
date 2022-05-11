@@ -111,16 +111,6 @@ public class TiendaProductosController {
 		}
 	}
 
-	class IdiomaSelector implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			int index = view.getIdiomaComboboxItemSeleccionado();
-			String idiomaSeleccionado = view.getIdiomaComboboxItem(index);
-			if (idiomaSeleccionado.equals(Idiomas.getIdiomaActual())) return;
-
-			Idiomas.setIdiomaActual(idiomaSeleccionado);
-		}
-	}
-
 	class Carrito implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			new CarritoController(model.getProductosCarrito()).mostrar();

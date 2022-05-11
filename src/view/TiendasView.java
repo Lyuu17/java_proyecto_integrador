@@ -87,6 +87,31 @@ public class TiendasView extends JFrame {
 	
 	/**
 	 * 
+	 * @param al ActionListener
+	 */
+	public void addIdiomaComboboxListener(ActionListener al) {
+		comboIdiomas.addActionListener(al);
+	}
+	
+	/**
+	 * 
+	 * @return el idioma seleccionado en el combobox de idiomas
+	 */
+	public int getIdiomaComboboxItemSeleccionado() {
+		return comboIdiomas.getSelectedIndex();
+	}
+	
+	/**
+	 * 
+	 * @param id el id del combobox de idiomas
+	 * @return el string que contiene el combobox
+	 */
+	public String getIdiomaComboboxItem(int id) {
+		return comboIdiomas.getItemAt(id);
+	}
+	
+	/**
+	 * 
 	 * @return el id de la fila seleccionada en la JTable Tiendas
 	 */
 	public int getTiendaFilaSeleccionada() {

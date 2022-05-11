@@ -1,6 +1,9 @@
 package app;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -16,7 +19,9 @@ public class Idiomas {
 	private static Map<String, Map<String, String>> memoria;
 	private static Map<String, ImageIcon> iconos;
 	
-	private static String idiomaActual = "";
+	private final static String IDIOMA_DEFECTO = "Espanol";
+	
+	private static String idiomaActual = IDIOMA_DEFECTO;
 	
 	/**
 	 * inicializar los HashMap y poner los idiomas por defecto con sus iconos
@@ -29,6 +34,45 @@ public class Idiomas {
 		iconos.put("Espanol", new ImageIcon(Idiomas.class.getResource("/images/spain.png")));
 		iconos.put("English", new ImageIcon(Idiomas.class.getResource("/images/uk.png")));
 
+		idiomaActual = getIdiomaArchivo();
+	}
+	
+	private static String getIdiomaArchivo() {
+		String idioma = IDIOMA_DEFECTO;
+		
+		File f = new File("idioma_actual.txt");
+		
+		Scanner sc;
+		try {
+			sc = new Scanner(f);
+			
+			if (sc.hasNextLine())
+				idioma = sc.nextLine();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return idioma;
+	}
+	
+	private static boolean guardarIdiomaActualArchivo(String archivo) {
+		File f = new File("idioma_actual.txt");
+		
+		try {
+			BufferedWriter bfw = new BufferedWriter(new FileWriter(f));
+			
+			bfw.write(idiomaActual);
+			
+			bfw.close();
+			
+			return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 	
 	/**
@@ -140,6 +184,8 @@ public class Idiomas {
 	 */
 	public static void setIdiomaActual(String idiomaActual) {
 		Idiomas.idiomaActual = idiomaActual;
+		
+		guardarIdiomaActualArchivo(idiomaActual);
 	}
 	
 	/**

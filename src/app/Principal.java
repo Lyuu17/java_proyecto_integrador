@@ -26,7 +26,6 @@ public class Principal {
 		}
 		
 		Idiomas.init();
-	    Idiomas.setIdiomaActual("Espanol");
 
 	    try {
 	    	Idiomas.cargarTraducciones(); //idiomas.dat

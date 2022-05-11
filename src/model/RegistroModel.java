@@ -17,7 +17,7 @@ public class RegistroModel {
 	}
 	
 	/**
-	 * 
+	 * Registrar a un usuario con los datos pasados por parámetro
 	 * @param usuario
 	 * @param contraseña
 	 * @param nombre
@@ -27,7 +27,7 @@ public class RegistroModel {
 	 * @param direccion
 	 * @param ciudad
 	 * @param codigoPostal
-	 * @return
+	 * @return true=ok, false=error
 	 */
 	public boolean registrarUsuario(String usuario, String contraseña, String nombre, String apellidos, String email, String numTlf, String direccion, String ciudad, String codigoPostal) {
 		Connection conn = GestorBD.getConexion();
@@ -46,8 +46,6 @@ public class RegistroModel {
 			Cuenta.setIniciadoSesion(true);
 			
 			return true;
-
-			//dispose();
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

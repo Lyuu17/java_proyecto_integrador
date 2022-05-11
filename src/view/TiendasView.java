@@ -117,7 +117,7 @@ public class TiendasView extends JFrame {
 	}
 	
 	/**
-	 * 
+	 * Insertar tiendas de un ArrayList
 	 * @param tiendas ArrayList de tiendas a añadir
 	 */
 	public void insertarTiendas(ArrayList<Tienda> tiendas) {
@@ -127,7 +127,7 @@ public class TiendasView extends JFrame {
 	}
 	
 	/**
-	 * 
+	 * Insertar una tienda
 	 * @param tienda la tienda a insertar
 	 */
 	public void insertarTienda(Tienda tienda) {

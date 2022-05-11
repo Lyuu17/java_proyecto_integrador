@@ -12,18 +12,17 @@ import java.sql.SQLException;
  *
  */
 public class GestorBD {
-	private static String host = "localhost";
-	private static int puerto = 1521;
-	private static String usuario = "proyecto";
-	private static String contraseña = "proyecto";
-	
 	private static Connection conn;
 
 	/**
-	 * 
-	 * @return true=conexion correcta, false=incorrecta
+	 * Conectar a la base de datos de Oracle con los datos pasados por parámetro
+	 * @param host El host de la BBDD
+	 * @param puerto Puerto de la BBDD
+	 * @param usuario Usuario de la cuenta de la BBDD
+	 * @param contraseña Contraseña de la cuenta de la BBDD
+	 * @return true=correcto, false=error
 	 */
-	public static boolean conectar() {
+	public static boolean conectar(String host, int puerto, String usuario, String contraseña) {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -38,7 +37,7 @@ public class GestorBD {
 	}
 	
 	/**
-	 * 
+	 * Desconectar de la base de datos
 	 * @return false=no existe conexión, true=cerrada
 	 */
 	public static boolean desconectar() {
@@ -55,21 +54,12 @@ public class GestorBD {
 	}
 	
 	/**
-	 * 
-	 * @return la conexión
-	 */
-	public static Connection getConexion() {
-		return conn;
-	}
-	
-	/**
-	 * 
-	 * @param q =query
-	 * @param args =argumentos
+	 * Realizar una consulta a la base de datos con solo String como parámetros
+	 * @param q Query
+	 * @param args Argumentos
 	 * @return ResultSet
 	 */
 	public static ResultSet consulta(String q, String... args) {
-		Connection conn = GestorBD.getConexion();
 		PreparedStatement stmt;
 		ResultSet res = null;
 		try {
@@ -90,16 +80,16 @@ public class GestorBD {
 	}
 	
 	/**
-	 * 
-	 * @param stmt statement preparado
-	 * @param paramArray
+	 * Realizar una consulta con actualización a la BBDD con solo String como parámetro
+	 * @param stmt Statement preparado
+	 * @param args Argumentos
 	 * @return el valor retornado de executeUpdate
 	 */
-	public static int consulta(PreparedStatement stmt, String... paramArray) {
+	public static int consulta(PreparedStatement stmt, String... args) {
 		int res = 0;
 		try {
 			int i = 1;
-			for(String paramStr : paramArray) {
+			for(String paramStr : args) {
 				stmt.setString(i, paramStr);
 				i++;
 			}
@@ -110,5 +100,13 @@ public class GestorBD {
 			e1.printStackTrace();
 		}
 		return res;
+	}
+
+	/**
+	 * Obtener la conexión actual a la BBDD
+	 * @return la conexión
+	 */
+	public static Connection getConexion() {
+		return conn;
 	}
 }

@@ -32,7 +32,7 @@ public class TiendaProductosModel {
 	}
 	
 	/**
-	 * 
+	 * Obtener los productos de la Tienda seleccionada
 	 * @return los productos
 	 */
 	public ArrayList<Producto> getProductos() {
@@ -41,7 +41,7 @@ public class TiendaProductosModel {
 	
 	
 	/**
-	 * 
+	 * Obtener los productos de la Tienda seleccionada por nombre
 	 * @param nombre buscar por nombre los productos
 	 * @return
 	 */
@@ -57,7 +57,7 @@ public class TiendaProductosModel {
 	}
 	
 	/**
-	 * 
+	 * Obtener los productos de la Tienda seleccionada por categoría
 	 * @param categoria buscar por categoria los productos
 	 * @return
 	 */
@@ -73,7 +73,7 @@ public class TiendaProductosModel {
 	}
 	
 	/**
-	 * 
+	 * Obtener los productos en el carrito de compra
 	 * @return los productos en el carrito
 	 */
 	public ArrayList<Producto> getProductosCarrito() {
@@ -81,7 +81,7 @@ public class TiendaProductosModel {
 	}
 	
 	/**
-	 * cargarProductos()
+	 * Cargar los productos de la tienda seleccionada
 	 */
 	public void cargarProductos() {
 		ResultSet rs = GestorBD.consulta("SELECT * FROM productos_tienda "

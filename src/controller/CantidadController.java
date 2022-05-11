@@ -31,17 +31,12 @@ public class CantidadController {
     }
 	
 	/**
-	 * mostrar()
+	 * Mostrar la vista
 	 */
 	public void mostrar() {
 		this.view.setVisible(true);
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	class AñadirCantidad implements ActionListener {
 		public void actionPerformed(ActionEvent evt) {
 			try {

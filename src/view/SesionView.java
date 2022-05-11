@@ -30,7 +30,7 @@ public class SesionView extends JFrame {
 	private JButton btnRegistrarse;
 
 	/**
-	 * Create the frame.
+	 * 
 	 */
 	public SesionView() {
 		setTitle("Cuenta");

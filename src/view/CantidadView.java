@@ -22,9 +22,6 @@ public class CantidadView extends JFrame {
 	private JPanel contentPane;
 	private int cantidad = 1;
 	
-	@SuppressWarnings("unused")
-	private final Producto producto;
-	
 	private final JButton btnAñadir;
 	private final JFormattedTextField fttdCantidad;
 	private final JLabel lblCantidadMaxima;
@@ -34,8 +31,6 @@ public class CantidadView extends JFrame {
 	 * @param p el producto
 	 */
 	public CantidadView(Producto p) {
-		this.producto = p;
-		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 274, 141);
 		contentPane = new JPanel();

@@ -47,7 +47,7 @@ public class SesionController {
 	class Accion implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int id = model.getCuentaPorUsuarioYContraseña(view.getUsuario(), view.getContraseña());
+			int id = model.getCuenta(view.getUsuario(), view.getContraseña());
 			if (id == -1) {
 				JOptionPane.showMessageDialog(view.getContentPane(), Idiomas.getTraduccionFormato("SESION_USUARIO_CONTRA_INVALIDA"), Idiomas.getTraduccionFormato("SESION_INICION_SESION_TITULO"), JOptionPane.ERROR_MESSAGE);
 				

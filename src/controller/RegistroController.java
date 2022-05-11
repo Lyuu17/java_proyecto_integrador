@@ -28,17 +28,12 @@ public class RegistroController {
     }
 	
 	/**
-	 * mostrar()
+	 * Mostrar la vista
 	 */
 	public void mostrar() {
 		this.view.setVisible(true);
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	class Enviar implements ActionListener {
 		public void actionPerformed(ActionEvent evt) {
 			if(view.getNombre().isEmpty() ||

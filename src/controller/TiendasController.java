@@ -47,17 +47,12 @@ public class TiendasController {
 	}
 	
 	/**
-	 * mostrar()
+	 * Mostrar la vista
 	 */
 	public void mostrar() {
 		this.view.setVisible(true);
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	class ActualizarTiendas implements DocumentListener {
 		@Override
 		public void insertUpdate(DocumentEvent e) {
@@ -85,11 +80,6 @@ public class TiendasController {
 		}
 	}
 
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
 	class SeleccionarTienda implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

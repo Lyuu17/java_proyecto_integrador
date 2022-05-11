@@ -20,7 +20,7 @@ public class TiendasModel {
 	}
 	
 	/**
-	 * cargarTiendas()
+	 * Cargar todas las tiendas de la BBDD
 	 */
 	public void cargarTiendas() {
 		String query = "SELECT direccion, numero, codigo_postal, poblacion, ciudad FROM tiendas";
@@ -37,7 +37,7 @@ public class TiendasModel {
 	}
 
 	/**
-	 * 
+	 * Obtener la lista de tiendas
 	 * @return la lista de tiendas
 	 */
 	public ArrayList<Tienda> getTiendas() {
@@ -45,7 +45,7 @@ public class TiendasModel {
 	}
 	
 	/**
-	 * 
+	 * Obtener la lista de tiendas por código postal
 	 * @param cp el código postal de la tienda
 	 * @return las tiendas
 	 */

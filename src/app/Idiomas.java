@@ -18,6 +18,9 @@ public class Idiomas {
 	
 	private static String idiomaActual = "";
 	
+	/**
+	 * inicializar los HashMap y poner los idiomas por defecto con sus iconos
+	 */
 	public static void init() {
 		memoria = new HashMap<String, Map<String, String>>();
 		iconos = new HashMap<String, ImageIcon>();
@@ -38,7 +41,7 @@ public class Idiomas {
 	}
 	
 	/**
-	 * 
+	 * Cargar traducciones con una ruta de archivo pasado por parámetro
 	 * @param archivo archivo a leer
 	 * @return true/false
 	 * @throws FileNotFoundException
@@ -86,7 +89,7 @@ public class Idiomas {
 	}
 	
 	/**
-	 * 
+	 * Obtener el mensaje traducido y formateado con los argumentos pasados por parámetro
 	 * @param id id del mensaje
 	 * @param args args para darle formato
 	 * @return el mensaje formateado
@@ -99,7 +102,7 @@ public class Idiomas {
 	}
 	
 	/**
-	 * 
+	 * Obtener la traducción por el id del mensaje
 	 * @param id id del mensaje
 	 * @return el mensaje
 	 */
@@ -112,7 +115,7 @@ public class Idiomas {
 	}
 	
 	/**
-	 * 
+	 * Obtener la traducción por el idioma y el id del mensaje
 	 * @param idioma el idioma
 	 * @param id el id del mensaje
 	 * @return el mensaje del idioma
@@ -125,6 +128,7 @@ public class Idiomas {
 	}
 
 	/**
+	 * Obtener el idioma actual
 	 * @return el idiomaActual
 	 */
 	public static String getIdiomaActual() {
@@ -139,7 +143,7 @@ public class Idiomas {
 	}
 	
 	/**
-	 * 
+	 * Obtener el icono del idioma
 	 * @param idioma
 	 * @return el ImageIcon del idioma
 	 */

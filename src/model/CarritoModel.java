@@ -19,9 +19,9 @@ public class CarritoModel {
 	}
 	
 	/**
-	 * 
+	 * Comprar (insertar en la BBDD al historial de compras) los productos de un ArrayList pasados por parámetro
 	 * @param productos ArrayList de productos
-	 * @return
+	 * @return true=correcto, false=error
 	 */
 	public boolean comprar(ArrayList<Producto> productos) {
 		Connection conn = GestorBD.getConexion();

@@ -51,18 +51,13 @@ public class TiendaProductosController {
 	}
 	
 	/**
-	 * mostrar()
+	 * Mostrar la vista
 	 */
 	public void mostrar() {
 		this.view.setVisible(true);
 		this.view.cargarListaProductos(tablaNombreColumnas, new Consultar(), this.model.getProductos());
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	class Atras implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -70,12 +65,7 @@ public class TiendaProductosController {
 			new TiendasController(new TiendasModel(), new TiendasView()).mostrar();
 		}
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	class ActualizarProductosBusqueda implements DocumentListener {
 		@Override
 		public void insertUpdate(DocumentEvent e) {
@@ -96,12 +86,7 @@ public class TiendaProductosController {
 			view.cargarListaProductos(tablaNombreColumnas, new Consultar(), model.getProductos(nombre));
 		}
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	class ActualizarProductosCategoria extends MouseAdapter {
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -114,12 +99,7 @@ public class TiendaProductosController {
             view.cargarListaProductos(tablaNombreColumnas, new Consultar(), productos);
         }
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	@SuppressWarnings("serial")
 	class Consultar extends AbstractAction {
 		public void actionPerformed(ActionEvent e)
@@ -130,12 +110,7 @@ public class TiendaProductosController {
 			new ProductoController(model.getProductosCarrito(), p).mostrar();
 		}
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	class IdiomaSelector implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			int index = view.getIdiomaComboboxItemSeleccionado();
@@ -145,23 +120,13 @@ public class TiendaProductosController {
 			Idiomas.setIdiomaActual(idiomaSeleccionado);
 		}
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	class Carrito implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			new CarritoController(model.getProductosCarrito()).mostrar();
 		}
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	class Cuenta implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			new SesionController().mostrar();

@@ -15,12 +15,12 @@ public class SesionModel {
 	}
 	
 	/**
-	 * 
+	 * Obtener el id de la cuenta por usuario y contraseña pasados por parámetro
 	 * @param usuario
 	 * @param contraseña
-	 * @return
+	 * @return el id único de la cuenta
 	 */
-	public int getCuentaPorUsuarioYContraseña(String usuario, String contraseña) {
+	public int getCuenta(String usuario, String contraseña) {
 		ResultSet rs = GestorBD.consulta("SELECT ID FROM usuarios WHERE usuario = ? AND contraseña = ?", usuario, 
 				utils.HashContraseña.hash(contraseña));
 

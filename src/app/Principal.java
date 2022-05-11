@@ -13,8 +13,13 @@ import view.LogoView;
 public class Principal {
 	public static final String PROGRAMA_NOMBRE = "Pickify";
 	
+	/**
+	 * Método principal que inicializa el gestor de base de datos,
+	 * idiomas, el tema FlatLightLaf y crea la interfaz de usuario
+	 * @param args sin usar
+	 */
 	public static void main(String[] args) {
-		if (!GestorBD.conectar()) {
+		if (!GestorBD.conectar("localhost", 1521, "proyecto", "proyecto")) {
 			System.out.println("Fallo al conectar a la base de datos");
 			
 			return;

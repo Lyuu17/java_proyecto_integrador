@@ -44,127 +44,127 @@ public class Producto {
 	}
 
 	/**
-	 * @return the id
+	 * @return el id
 	 */
 	public int getId() {
 		return id;
 	}
 	
 	/**
-	 * @param id the id to set
+	 * @param id el id a establecer
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 	/**
-	 * @return the nombre
+	 * @return el nombre
 	 */
 	public String getNombre() {
 		return nombre;
 	}
 	/**
-	 * @param nombre the nombre to set
+	 * @param nombre el nombre a establecer
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	/**
-	 * @return the descripcion
+	 * @return la descripcion
 	 */
 	public String getDescripcion() {
 		return descripcion;
 	}
 	/**
-	 * @param descripcion the descripcion to set
+	 * @param descripcion la descripcion a establecer
 	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 	/**
-	 * @return the precio
+	 * @return el precio
 	 */
 	public double getPrecio() {
 		return precio;
 	}
 	/**
-	 * @param precio the precio to set
+	 * @param precio el precio a establecer
 	 */
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 
 	/**
-	 * @return the rebaja
+	 * @return la rebaja
 	 */
 	public double getRebaja() {
 		return rebaja;
 	}
 
 	/**
-	 * @param rebaja the rebaja to set
+	 * @param la the rebaja a establecer
 	 */
 	public void setRebaja(double rebaja) {
 		this.rebaja = rebaja;
 	}
 
 	/**
-	 * @return the fechaAñadido
+	 * @return la fechaAñadido
 	 */
 	public String getFechaAñadido() {
 		return fechaAñadido;
 	}
 
 	/**
-	 * @param fechaAñadido the fechaAñadido to set
+	 * @param fechaAñadido la fechaAñadido a establecer
 	 */
 	public void setFechaAñadido(String fechaAñadido) {
 		this.fechaAñadido = fechaAñadido;
 	}
 
 	/**
-	 * @return the categoria
+	 * @return la categoria
 	 */
 	public int getCategoria() {
 		return categoria;
 	}
 
 	/**
-	 * @return the cantidad
+	 * @return la cantidad
 	 */
 	public int getCantidad() {
 		return cantidad;
 	}
 
 	/**
-	 * @param cantidad the cantidad to set
+	 * @param cantidad la cantidad para establecer
 	 */
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
 
 	/**
-	 * @return the cantidadMaxima
+	 * @return la cantidadMaxima
 	 */
 	public int getCantidadMaxima() {
 		return cantidadMaxima;
 	}
 
 	/**
-	 * @param cantidadMaxima the cantidadMaxima to set
+	 * @param cantidadMaxima la cantidadMaxima para establecer
 	 */
 	public void setCantidadMaxima(int cantidadMaxima) {
 		this.cantidadMaxima = cantidadMaxima;
 	}
 
 	/**
-	 * @return the icono
+	 * @return el icono
 	 */
 	public ImageIcon getIcono() {
 		return icono;
 	}
 
 	/**
-	 * @param icono the icono to set
+	 * @param icono el icono to set
 	 */
 	public void setIcono(ImageIcon icono) {
 		this.icono = icono;

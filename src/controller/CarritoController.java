@@ -49,17 +49,12 @@ public class CarritoController {
     }
 	
 	/**
-	 * mostrar()
+	 * Mostrar la vista
 	 */
 	public void mostrar() {
 		this.view.setVisible(true);
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	class Comprar implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (!Cuenta.isIniciadoSesion()) {
@@ -81,12 +76,7 @@ public class CarritoController {
 			JOptionPane.showMessageDialog(view.getContentPane(), Idiomas.getTraduccionFormato("CARRITO_COMPRA_OK"), Idiomas.getTraduccionFormato("CARRITO_COMPRA_TITULO"), JOptionPane.PLAIN_MESSAGE);
 		}
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	@SuppressWarnings("serial")
 	class BotonAñadir extends AbstractAction {
 		public void actionPerformed(ActionEvent e)
@@ -101,12 +91,7 @@ public class CarritoController {
 			view.actualizarFilaTabla(id, view.crearFilaObjeto(p));
 		}
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	@SuppressWarnings("serial")
 	class BotonEliminar extends AbstractAction {
 		public void actionPerformed(ActionEvent e)

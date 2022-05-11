@@ -38,17 +38,12 @@ public class ProductoController {
     }
 	
 	/**
-	 * 
+	 * Mostrar la vista
 	 */
 	public void mostrar() {
 		this.view.setVisible(true);
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	class Añadir implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			new CantidadController(productosCarrito, producto).mostrar();

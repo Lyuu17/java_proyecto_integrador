@@ -29,17 +29,12 @@ public class LogoController {
 	}
 	
 	/**
-	 * mostrar()
+	 * Mostrar la vista
 	 */
 	public void mostrar() {
 		this.view.setVisible(true);
 	}
-	
-	/**
-	 * 
-	 * @author daw
-	 *
-	 */
+
 	private class Continuar implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

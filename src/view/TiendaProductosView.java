@@ -204,7 +204,7 @@ public class TiendaProductosView extends JFrame {
 	}
 	
 	/**
-	 * 
+	 * Insertar los productos de un ArrayList
 	 * @param productos productos a insertar
 	 */
 	public void insertarProductos(ArrayList<Producto> productos) {
@@ -214,7 +214,7 @@ public class TiendaProductosView extends JFrame {
 	}
 	
 	/**
-	 * 
+	 * Insertar producto pasado por parámetro
 	 * @param p producto a insertar
 	 */
 	public void insertarProducto(Producto p) {
@@ -223,7 +223,7 @@ public class TiendaProductosView extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Cargar la lista de productos
 	 * @param tablaNombreColumnas Array de String con el nombre de las columnas
 	 * @param actConsultar AbstractAction para el boton de columna Consultar
 	 * @param productos ArrayList de productos

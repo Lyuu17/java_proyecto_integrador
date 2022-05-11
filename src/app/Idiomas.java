@@ -19,7 +19,7 @@ public class Idiomas {
 	private static Map<String, Map<String, String>> memoria;
 	private static Map<String, ImageIcon> iconos;
 	
-	private final static String IDIOMA_DEFECTO = "Espanol";
+	public final static String IDIOMA_DEFECTO = "Espanol";
 	
 	private static String idiomaActual = IDIOMA_DEFECTO;
 	

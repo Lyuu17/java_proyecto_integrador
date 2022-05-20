@@ -42,34 +42,50 @@ public class TiendaProductosModel {
 	
 	/**
 	 * Obtener los productos de la Tienda seleccionada por nombre
+	 * @param productos ArrayList de los productos, nulo por defecto
 	 * @param nombre buscar por nombre los productos
-	 * @return
+	 * @return los productos
 	 */
-	public ArrayList<Producto> getProductos(String nombre) {
-		ArrayList<Producto> productos = new ArrayList<Producto>();
-		for(Producto producto : getProductos()) {
+	public ArrayList<Producto> getProductos(ArrayList<Producto> productos, String nombre) {
+		if (productos == null) productos = getProductos();
+		
+		ArrayList<Producto> nuevosProductos = new ArrayList<Producto>();
+		for(Producto producto : productos) {
 			if (producto.getNombre().toLowerCase().indexOf(nombre.toLowerCase()) < 0 && !nombre.equals("")) continue;
 			
-			productos.add(producto);
+			nuevosProductos.add(producto);
 		}
 		
-		return productos;
+		return nuevosProductos;
 	}
 	
 	/**
 	 * Obtener los productos de la Tienda seleccionada por categoría
+	 * @param productos ArrayList de los productos, nulo por defecto
 	 * @param categoria buscar por categoria los productos
-	 * @return
+	 * @return los productos
 	 */
-	public ArrayList<Producto> getProductos(int categoria) {
-		ArrayList<Producto> productos = new ArrayList<Producto>();
-		for(Producto producto : getProductos()) {
+	public ArrayList<Producto> getProductos(ArrayList<Producto> productos, int categoria) {
+		if (productos == null) productos = getProductos();
+		
+		ArrayList<Producto> nuevosProductos = new ArrayList<Producto>();
+		for(Producto producto : productos) {
 			if (producto.getCategoria() != categoria && categoria != 0) continue;
 			
-			productos.add(producto);
+			nuevosProductos.add(producto);
 		}
 		
-		return productos;
+		return nuevosProductos;
+	}
+	
+	/**
+	 * Obtener los productos de la Tienda seleccionada por nombre y categoría
+	 * @param nombre nombre del producto
+	 * @param categoria categoria del producto
+	 * @return los productos
+	 */
+	public ArrayList<Producto> getProductos(String nombre, int categoria) {
+		return getProductos(getProductos(null, nombre), categoria);
 	}
 	
 	/**

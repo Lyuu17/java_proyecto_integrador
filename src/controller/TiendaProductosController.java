@@ -83,7 +83,9 @@ public class TiendaProductosController {
 		private void actualizarListaProductos() {
 			String nombre = view.getBuscarProductosTexto();
 			
-			view.cargarListaProductos(tablaNombreColumnas, new Consultar(), model.getProductos(nombre));
+			DefaultTreeNodeCategorias node = (DefaultTreeNodeCategorias) view.getTreeNodeLastSelectedPathComponent();
+			ArrayList<Producto> productos = model.getProductos(view.getBuscarProductosTexto(), node.getUUID());
+			view.cargarListaProductos(tablaNombreColumnas, new Consultar(), productos);
 		}
 	}
 
@@ -94,8 +96,8 @@ public class TiendaProductosController {
 			
 			DefaultTreeNodeCategorias node = (DefaultTreeNodeCategorias) view.getTreeNodeLastSelectedPathComponent();
             if (node == null) return;
-            
-            ArrayList<Producto> productos = model.getProductos(node.getUUID());
+
+            ArrayList<Producto> productos = model.getProductos(view.getBuscarProductosTexto(), node.getUUID());
             view.cargarListaProductos(tablaNombreColumnas, new Consultar(), productos);
         }
 	}
@@ -106,7 +108,9 @@ public class TiendaProductosController {
 		{
 			int id = Integer.valueOf(e.getActionCommand());
 
-			Producto p = model.getProductos().get(id);
+			DefaultTreeNodeCategorias node = (DefaultTreeNodeCategorias) view.getTreeNodeLastSelectedPathComponent();
+			
+			Producto p = model.getProductos(view.getBuscarProductosTexto(), node.getUUID()).get(id);
 			new ProductoController(model.getProductosCarrito(), p).mostrar();
 		}
 	}

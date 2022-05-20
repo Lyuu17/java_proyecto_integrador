@@ -36,7 +36,7 @@ public class CarritoController {
 	
 	/**
 	 * 
-	 * @param productosCarrito
+	 * @param productosCarrito los productos del carrito
 	 */
 	public CarritoController(ArrayList<Producto> productosCarrito) {
 		this.model = new CarritoModel();

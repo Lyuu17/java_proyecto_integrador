@@ -190,7 +190,7 @@ public class Idiomas {
 	
 	/**
 	 * Obtener el icono del idioma
-	 * @param idioma
+	 * @param idioma el idioma en String
 	 * @return el ImageIcon del idioma
 	 */
 	public static ImageIcon getIdiomaIcono(String idioma) {

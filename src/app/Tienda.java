@@ -14,11 +14,11 @@ public class Tienda {
 
 	/**
 	 * 
-	 * @param direccion
-	 * @param numero
-	 * @param codigo_postal
-	 * @param poblacion
-	 * @param ciudad
+	 * @param direccion dirección de la tienda
+	 * @param numero nº de la tienda
+	 * @param codigo_postal código postal de la tienda
+	 * @param poblacion población de la tienda
+	 * @param ciudad ciudad de la tienda
 	 */
 	public Tienda(String direccion, int numero, int codigo_postal, String poblacion, String ciudad) {
 		super();

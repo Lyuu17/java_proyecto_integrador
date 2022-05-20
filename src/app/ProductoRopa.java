@@ -12,18 +12,18 @@ public class ProductoRopa extends Producto {
 
 	/**
 	 * 
-	 * @param id
-	 * @param nombre
-	 * @param descripcion
-	 * @param precio
-	 * @param rebaja
-	 * @param fechaAñadido
-	 * @param categoria
-	 * @param cantidad
-	 * @param cantidadMaxima
-	 * @param talla
-	 * @param color
-	 * @param marca
+	 * @param id ID del producto
+	 * @param nombre nombre del producto
+	 * @param descripcion descripción del producto
+	 * @param precio precio del producto
+	 * @param rebaja rebaja del producto, si hay
+	 * @param fechaAñadido fecha añadido del producto
+	 * @param categoria categoria del producto
+	 * @param cantidad cantidad del producto
+	 * @param cantidadMaxima cantidad maxima del producto en la tienda
+	 * @param talla talla de la prenda
+	 * @param color color de la prenda
+	 * @param marca marca de la prenda
 	 */
 	public ProductoRopa(int id, String nombre, String descripcion, double precio, double rebaja, String fechaAñadido, int categoria, int cantidad, int cantidadMaxima, 
 			String talla, String color, String marca) {

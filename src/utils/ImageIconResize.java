@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 
 /**
  * 
- * @see: <a href="https://stackoverflow.com/a/18335435>StackOverflow</a>
+ * @see <a href="https://stackoverflow.com/a/18335435">StackOverflow</a>
  *
  */
 @SuppressWarnings("serial")

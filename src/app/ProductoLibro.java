@@ -12,18 +12,18 @@ public class ProductoLibro extends Producto{
 	
 	/**
 	 * 
-	 * @param id
-	 * @param nombre
-	 * @param descripcion
-	 * @param precio
-	 * @param rebaja
-	 * @param fechaAñadido
-	 * @param categoria
-	 * @param cantidad
-	 * @param cantidadMaxima
-	 * @param autor
-	 * @param numeroPaginas
-	 * @param editorial
+	 * @param id ID del producto
+	 * @param nombre nombre del producto
+	 * @param descripcion descripción del producto
+	 * @param precio precio del producto
+	 * @param rebaja rebaja del producto, si hay
+	 * @param fechaAñadido fecha añadido del producto
+	 * @param categoria categoria del producto
+	 * @param cantidad cantidad del producto
+	 * @param cantidadMaxima cantidad maxima del producto en la tienda
+	 * @param autor autor del libro
+	 * @param numeroPaginas nº de paginas del libro
+	 * @param editorial editorial del libro
 	 */
 	public ProductoLibro(int id, String nombre, String descripcion, double precio, double rebaja, String fechaAñadido, int categoria, int cantidad, int cantidadMaxima, 
 			String autor, int numeroPaginas, String editorial) {

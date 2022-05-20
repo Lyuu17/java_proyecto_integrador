@@ -19,8 +19,8 @@ public class CantidadController {
 	
 	/**
 	 * 
-	 * @param productos
-	 * @param p
+	 * @param productos los productos
+	 * @param p el producto
 	 */
 	public CantidadController(ArrayList<Producto> productos, Producto p) {
         this.view = new CantidadView(p);

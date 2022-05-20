@@ -11,17 +11,17 @@ public class ProductoComida extends Producto {
 
 	/**
 	 * 
-	 * @param id
-	 * @param nombre
-	 * @param descripcion
-	 * @param precio
-	 * @param rebaja
-	 * @param fechaAñadido
-	 * @param categoria
-	 * @param cantidad
-	 * @param cantidadMaxima
-	 * @param fabricante
-	 * @param peso
+	 * @param id ID del producto
+	 * @param nombre nombre del producto
+	 * @param descripcion descripción del producto
+	 * @param precio precio del producto
+	 * @param rebaja rebaja del producto, si hay
+	 * @param fechaAñadido fecha añadido del producto
+	 * @param categoria categoria del producto
+	 * @param cantidad cantidad del producto
+	 * @param cantidadMaxima cantidad maxima del producto en la tienda
+	 * @param fabricante fabricante del producto
+	 * @param peso peso del producto
 	 */
 	public ProductoComida(int id, String nombre, String descripcion, double precio, double rebaja, String fechaAñadido, int categoria, int cantidad, int cantidadMaxima, 
 			String fabricante, double peso) {

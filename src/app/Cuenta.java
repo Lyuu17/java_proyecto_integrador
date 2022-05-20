@@ -22,7 +22,7 @@ public class Cuenta {
 	
 	/**
 	 * Guardar ID de la tienda seleccionada
-	 * @param tiendaID
+	 * @param tiendaID ID de la tienda
 	 */
 	public static void setTiendaID(int tiendaID) {
 		Cuenta.idTienda = tiendaID;

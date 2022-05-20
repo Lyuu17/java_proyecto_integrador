@@ -21,15 +21,15 @@ public class Producto {
 
 	/**
 	 * 
-	 * @param id
-	 * @param nombre
-	 * @param descripcion
-	 * @param precio
-	 * @param rebaja
-	 * @param fechaAñadido
-	 * @param cantidad
-	 * @param cantidadMaxima
-	 * @param categoria
+	 * @param id ID del producto
+	 * @param nombre nombre del producto
+	 * @param descripcion descripción del producto
+	 * @param precio precio del producto
+	 * @param rebaja rebaja del producto, si hay
+	 * @param fechaAñadido fecha añadido del producto
+	 * @param cantidad cantidad del producto
+	 * @param cantidadMaxima cantidad maxima del producto en la tienda
+	 * @param categoria categoria del producto
 	 */
 	public Producto(int id, String nombre, String descripcion, double precio, double rebaja, String fechaAñadido, int cantidad, int cantidadMaxima, int categoria) {
 		this.id = id;
@@ -101,7 +101,7 @@ public class Producto {
 	}
 
 	/**
-	 * @param la the rebaja a establecer
+	 * @param rebaja la rebaja
 	 */
 	public void setRebaja(double rebaja) {
 		this.rebaja = rebaja;
